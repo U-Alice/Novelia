@@ -91,9 +91,18 @@ form{
 .right{
     font-size: 3em;
     color: white;
+    margin-left:10%;
+    position: absolute;
+}
+.left{
+    font-size: 3em;
+    margin-right: 80%;
+    color: white;
+
 }
 .slider{
     overflow: hidden;
+    opacity: 0;
 }
 .slider div div{
     display: inline;
