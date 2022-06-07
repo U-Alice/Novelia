@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.pic{
+    height: 100%;
+    width: 30%;  
+    background-color: #d89f82;
+}
+.side h3{
+    color: #883100;
+    font-size: 2em;
+    width: 40%;
+    text-align: justify;
+    
+}
+.side{
+    width: 70%;
+    background-color: rgba(240,210,191,255);
+}
+.pic img{
+    height: 50%;
+    width: 30%;
+    position: absolute;
+    top: 25%;
+    right: 20%;
+    z-index: 0;
+    
+}
+.pic .layer{
+    height: 50%;
+    width: 30%;
+    position: absolute;
+    top: 25%;
+    right: 20%;
+    background-color: rgba(240,210,191,255);
+    opacity: 0.2;
+}
+.side button{
+    height: 40px;
+    width: 20%;
+    background-color: #883100;
+    color: white;
+}

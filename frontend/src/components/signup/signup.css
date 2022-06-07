@@ -56,7 +56,7 @@ label{
     font-weight: bold;
 }
  #submit{
-    background-color: black;
+    background-color: rgb(129, 96, 55);
     color: white;
     border-radius: 6px;
     font-weight: bold;
@@ -84,9 +84,10 @@ form{
 
 }
 .testimonies p{
-    font-size: 1.5em;
+    /* font-size: 1.5   em;
     color: rgb(0, 0, 0);
     font-weight: bold;
+    width: 85%; */
 }
 .right{
     font-size: 3em;
@@ -101,9 +102,27 @@ form{
 
 }
 .slider{
-    overflow: hidden;
-    opacity: 0;
+    width:fit-content;
+    word-wrap: break-word   ;
 }
 .slider div div{
     display: inline;
+}
+.hidden{
+    display: none;
+}
+.mainLogin{
+    height: 70vh;
+    width: 30%;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px 1px rgba(139, 138, 138, 0.4);
+    background-color: aliceblue;
+}
+.mainLogin div{
+    margin-left: 5%;
+    padding-top: 10%;
+}
+.displayed{
+    width: 50%;
+
 }

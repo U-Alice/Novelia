@@ -7,27 +7,30 @@ function SignUp() {
   const nextSlide = () => {
     if (slideIndex !== testimonies.length) {
       setSlideIndex(slideIndex + 1);
-    } else if ((slideIndex === dataSlider) === dataSlider.length)
+      console.log(slideIndex)
+    } else if (slideIndex === testimonies.length){
       setSlideIndex(1);
+      console.log(slideIndex)
+    }
   };
   const prevSlide = () => {
-
-    if (slideIndex !== testimonies.length) {
-        setSlideIndex(slideIndex - 1);
-      } else if ((slideIndex === 1) === dataSlider.length)
-        setSlideIndex(1);
-
+    if (slideIndex !== 1) {
+      setSlideIndex(slideIndex - 1);
+      console.log(slideIndex)
+      } else if (slideIndex == 1){
+        setSlideIndex(testimonies.length);
+        console.log( slideIndex)
+      }
   };
   return (
     <div className="main">
       <div className="picture">
         <div className="testimonies">
-          <div className="slider">
+          <div className='slider'>
             {testimonies.map((obj) => {
-              return obj.text;
+              return <p className={obj.id == slideIndex ? "displayed": "hidden"}>{obj.text}</p>
             })}
           </div>
-          {/* <i class="fa-solid fa-circle-arrow-right right"></i> */}
           <BTNslider moveSlide={nextSlide} direction="next"></BTNslider>
           <BTNslider moveSlide={prevSlide} direction="prev"></BTNslider>
         </div>

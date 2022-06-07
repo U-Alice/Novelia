@@ -1,16 +1,17 @@
 import {v4} from "uuid";
+let id = 1 ; 
 
 const testimonies =  [
     {
-        id: v4(), 
-        text: "LOREM",
+        id: id++, 
+        text: "dfkldkfldkfldskjflkdjfkdjfhlkdjfhkjdhflkdsjhfldskjfldkjfhkdsljfhlkdjfhlkjfhlksdjfkdjfkldsjfhkldsjhfkljdfhldkjfhlkdjfhlkdjfkdjfdjfldkjfdkjfhlkdjfhdhfieujdhfi",
     }, 
     {
-    id: v4(), 
+    id: id++, 
     text: "Lorem2"
     }, 
     {
-        id: v4(), 
+        id: id++, 
         text: "Lorem3"
     }
 ]
