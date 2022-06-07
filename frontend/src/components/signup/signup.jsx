@@ -2,6 +2,7 @@ import "./signup.css";
 import testimonies from "./testimonies";
 import BTNslider from "./slider/buttonSlider.jsx";
 import { useState } from "react";
+import {Link} from 'react-router-dom'
 function SignUp() {
   const [slideIndex, setSlideIndex] = useState(1);
   const nextSlide = () => {
@@ -53,7 +54,15 @@ function SignUp() {
               continue with google
             </button>
             <p>
-              Already have have an account? <span id="redirect">Sign In</span>
+
+              Already have have an account? 
+              
+              <span id="redirect">
+                <Link to="/signin">
+                
+                Sign In
+                </Link>
+                </span>
             </p>
           </form>
         </div>

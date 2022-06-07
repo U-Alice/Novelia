@@ -1,4 +1,5 @@
 import "./home.css";
+import {Link } from "react-router-dom"
 function Home() {
   return (
     <div className="mainPage">
@@ -16,8 +17,7 @@ function Home() {
          <div className="text">
         <h3> WELCOME TO BOK, YOUR NUMBER ONE CHOICE FOR READING EXPERINCE</h3>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos placeat ipsum nam tempora est aliquam nisi hic repudiandae. Odio, illum temporibus? Exercitationem quidem eveniet, iure ipsam minus ea repellendus deleniti.</p>
-        <Link>
-        
+        <Link to="/signup">
         <button>GET STARTED</button>
         </Link>
         </div>
