@@ -1,7 +1,11 @@
 import "./home.css";
 import {Link } from "react-router-dom"
+import About from "./about";
+import Available from "./available";
+import Services from "./services";
 function Home() {
   return (
+    <div>
     <div className="mainPage">
      <div className="side">
          <div>
@@ -10,7 +14,8 @@ function Home() {
                  <a href="#">LOGO</a>
                  <a href="#">Home</a>
                  <a href="#">About</a>
-                 <a href="#">Contact us</a>
+                 <a href="#">Services</a>
+                 <a href="#">Available</a>
                  </div>
              </nav>
          </div>
@@ -24,13 +29,18 @@ function Home() {
      </div>
       <div className="pic">
                  <div id="last">  
-                 <a href="#">About</a>
-                 <a href="#">Contact us</a>                
+                 <a><i class="fa-brands fa-instagram"></i></a>
+                 <a><i class="fa-brands fa-linkedin"></i></a>
+                <a> <i class="fa-brands fa-twitter"></i> </a>        
                  </div>
           <img src="https://images.unsplash.com/photo-1548048026-5a1a941d93d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="reader" />
           <div className="layer"></div>
       </div>
     </div>
+      <About/>
+      <Available/>
+      <Services />
+      </div>
   );
 }
 export default Home;
