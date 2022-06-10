@@ -3,6 +3,7 @@ import {Link } from "react-router-dom"
 import About from "./about";
 import Available from "./available";
 import Services from "./services";
+import Footer from "./footer";
 function Home() {
   return (
     <div>
@@ -40,6 +41,7 @@ function Home() {
       <About/>
       <Available/>
       <Services />
+      <Footer />
       </div>
   );
 }

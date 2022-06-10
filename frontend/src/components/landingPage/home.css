@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: 'poppins'
 }
 .mainPage{
     height: 90vh;
@@ -13,11 +14,10 @@
     background-color: #d89f82;  
 }
 .side h3{
-    color: #883100;
+    color: #612D08;
     font-size: 2em;
     width: 40%;
     text-align: justify;
-    /* margin-left: 5; */
     
 }
 .side p{
@@ -29,7 +29,7 @@
 .side{
     width: 70%;
     height: 100%;
-    background-color: rgba(240,210,191,255);
+    background-color: #F4F3EE;
 }
 .pic img{
     height: 50%;
@@ -46,14 +46,14 @@
     width: 30%;
     position: absolute;
     top: 25%;
-    right: 20%;
+    right: 15%;
     background-color: rgba(240,210,191,255);
     opacity: 0.2;
 }
 .side button, .available div button{
     height: 40px;
     width: 20%;
-    background-color: #883100;
+    background-color: #612D08;
     color: white;
     border: none;
     border-radius: 4px;
@@ -74,7 +74,7 @@
     
 }
 nav div a, #last a{
-    color: #883100;
+    color: #612D08;
     text-decoration: none;
     font-size: 20px;
     margin-left: 5%;
@@ -91,17 +91,14 @@ nav div a:hover{
     text-decoration: underline;
 }
 nav div{
-    /* display: flex; */
     gap: 12;
 }
 nav{
     margin-top: 2%;
-    /* display: flex; */
     margin-left: 15%;
     width: 100%;
 }
 #last{
-    /* position:absolute; */
     margin-left: 15%;
     margin-top: 3%;
     right: 12px;
@@ -120,7 +117,7 @@ nav{
 .about-side p{
     width: 75%;
     text-align: justify;
-    color: #883100;
+    color: #612D08;
     font-weight: bold;
     font-size: 18px;
 }
@@ -141,7 +138,7 @@ nav{
     display: flex;
     justify-content: flex-end;
     position: relative;
-    background-color: #f2d4c690;
+    background-color: #F4F3EE;
     margin-top: 5%;
     height: 70vh;
 }
@@ -169,15 +166,11 @@ nav{
     margin-left: 42%;
     height: 400px;
 }
-.available {
-    /* background-color: #f2d4c690;
-    margin-top: 5%;
-    height: 70vh; */
-}
+
 .grid div p{
     height: 30px;
     width: 19.85vw;
-    background-color: #d89f82;  
+    background-color: #F4F3EE;  
     text-align: center;
     margin-top:-10px;
     margin-left: 42%;
@@ -189,12 +182,50 @@ nav{
 .available h1, .services h1{
     text-align: center;
     padding-top: 2em;
-    color: #883100;
+    color: #612D08;
 }
 .services{
-    background-color: #f2d4c690;
+    background-color: #F4F3EE;
     margin-top: 5%;
     height: 40vh;
-    color: #883100;
+    color: #612D08;
     font-size: 18px;
+}
+.footer{
+    height: 25vh;
+    background-color: #612D08;
+    width: 100%;
+    color: white;
+}
+.footer a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+
+.links{
+    align-items: center;
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+}
+.links div{
+    margin-top: 12px;
+}
+.links div a{
+    margin-left:100px;
+}
+
+.bottom{
+    background-color: #F4F3EE;
+    width: 96%;
+    height: 20%;
+    color: #612D08;
+    margin-top: 2%;
+    display: flex;
+    gap: 40%;
+    padding-left: 4%;
+    padding-top: 2%;
+    font-size: 1.2em;
 }
