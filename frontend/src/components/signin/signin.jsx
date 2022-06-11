@@ -1,25 +1,28 @@
 import "../signup/signup.css";
 import Button from "../utils/buttons";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 function SignIn() {
   return (
-    <div className="mainLogin">
-      <div>
+    <div className="main">
+      <div className="picture"></div>
+      <div className="formLogin">
         <h1>Welcome Back</h1>
+        
+          <i class="fa-solid fa-user-plus"></i>
+          <h3 id="signup">Login</h3>
+      
         <form action="">
-          <label htmlFor="">Email</label>
-          <input type="email" />
-          <label htmlFor="">Password</label>
-          <input type="password" name="password" />
+          <input type="email" placeholder="Username" />
+          <input type="password" name="password" placeholder="password" />
           <button type="submit" id="submit">
             Sign In
           </button>
           <Button />
           <p>
             Don't have have an account?
-            <span id="redirect">
-              <Link to="/signup"> Sign up</Link>
-            </span>
+            <Link to="/signup">
+              <span id="redirect">Sign up</span>
+            </Link>
           </p>
         </form>
       </div>

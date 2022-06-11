@@ -2,34 +2,39 @@ import "./signup.css";
 import testimonies from "./testimonies";
 import BTNslider from "./slider/buttonSlider.jsx";
 import { useState } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import UserContext from "./userContext";
 function SignUp() {
   const [slideIndex, setSlideIndex] = useState(1);
   const nextSlide = () => {
     if (slideIndex !== testimonies.length) {
       setSlideIndex(slideIndex + 1);
-      console.log(slideIndex)
-    } else if (slideIndex === testimonies.length){
+      console.log(slideIndex);
+    } else if (slideIndex === testimonies.length) {
       setSlideIndex(1);
-      console.log(slideIndex)
+      console.log(slideIndex);
     }
   };
   const prevSlide = () => {
     if (slideIndex !== 1) {
       setSlideIndex(slideIndex - 1);
-      console.log(slideIndex)
-      } else if (slideIndex == 1){
-        setSlideIndex(testimonies.length);
-        console.log( slideIndex)
-      }
+      console.log(slideIndex);
+    } else if (slideIndex == 1) {
+      setSlideIndex(testimonies.length);
+      console.log(slideIndex);
+    }
   };
   return (
     <div className="main">
       <div className="picture">
         <div className="testimonies">
-          <div className='slider'>
+          <div className="slider">
             {testimonies.map((obj) => {
-              return <p className={obj.id == slideIndex ? "displayed": "hidden"}>{obj.text}</p>
+              return (
+                <p className={obj.id == slideIndex ? "displayed" : "hidden"}>
+                  {obj.text}
+                </p>
+              );
             })}
           </div>
           <BTNslider moveSlide={nextSlide} direction="next"></BTNslider>
@@ -39,14 +44,13 @@ function SignUp() {
       <div className="form">
         <div>
           <h1 id="welcome">Welcome to BOK</h1>
-          <p>We are exicted to have you !Enter your credentials to register</p>
+          <i class="fa-solid fa-user-plus"></i>
+          <h3 id="signup">SIGN UP</h3>
           <form action="">
-            <label htmlFor="">Email</label>
-            <input type="email" />
-            <label htmlFor="">Password</label>
-            <input type="password" />
-            <label htmlFor="">User Name</label>
-            <input type="text" />
+            <input type="text" placeholder="Username" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="password" />
+            <input type="password" placeholder="Confirm Password" />
             <button type="submit" id="submit">
               Sign UP
             </button>
@@ -54,17 +58,13 @@ function SignUp() {
               continue with google
             </button>
             <p>
-
-              Already have have an account? 
-              
-              <span id="redirect">
-                <Link to="/signin">
-                
-                Sign In
-                </Link>
-                </span>
+              Already have have an account?
+              <Link to="/signin">
+                <span id="redirect">Sign In</span>
+              </Link>
             </p>
           </form>
+          <UserContext.Provider></UserContext.Provider>
         </div>
       </div>
     </div>
