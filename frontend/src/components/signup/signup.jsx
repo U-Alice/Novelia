@@ -28,19 +28,19 @@ function SignUp() {
   };
 
   function InvalidMsg(textbox) {
-  
-    // if (textbox.value === '') {
-    //     textbox.setCustomValidity
-    //           ('Entering an email-id is necessary!');
-    // } else if (textbox.validity.typeMismatch) {
-    //     textbox.setCustomValidity
-    //           ('Please enter an email address which is valid!');
-    // } else {
-    //     textbox.setCustomValidity('');
-    // }
+  textbox.preventDefault()
+    if (textbox.target.value === '') {
+        textbox.target.setCustomValidity
+              ('Entering an email-id is necessary!');
+    } else if (textbox.target.validity.typeMismatch) {
+        textbox.target.setCustomValidity
+              ('Please enter an email address which is valid!');
+    } else {
+        textbox.target.setCustomValidity('');
+    }
 
-    // return true;
-    console.log(textbox)
+    return true;
+    console.log(textbox.target)
   }
 
   const [isLoading, setLoading] = useState(false)
@@ -55,17 +55,13 @@ function SignUp() {
   const handleInputChange = ({currentTarget: input})=>{
       setData({...data,[input.name]: input.value})
   }
-  const Navigate = useNavigate("")
-
-
-  //  Navigate("/welcome")
-
 
   const getUser = async (e) => {
     e.preventDefault()
     setLoading(true)
+    setSuccess("")
    await fetch("http://localhost:4001/register", {
-      method: "POST", // or 'PUT'
+      method: "POST", 
       headers: {
         "Content-Type": "application/json",
       },
@@ -74,6 +70,7 @@ function SignUp() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        setSuccess(data.message)
         setLoading(false)
       })
       .catch((error) => {
@@ -110,7 +107,7 @@ function SignUp() {
               name="userName"
               value={data.userName}
               onChange={handleInputChange}
-              // onInput={InvalidMsg(this)}
+              onInput={InvalidMsg}
               required
             />
             <input
@@ -119,7 +116,7 @@ function SignUp() {
               name="email"
               value={data.email}
               onChange={handleInputChange}
-              // onInput={InvalidMsg(this)}
+              onInput={InvalidMsg}
               required
             />
             <input
@@ -128,7 +125,7 @@ function SignUp() {
               name="password"
               value={data.password}
               onChange={handleInputChange}
-              // onInput={InvalidMsg(this)}
+              onInput={InvalidMsg}
               required
             />
             <input type="password" placeholder="Confirm Password" />
@@ -139,6 +136,7 @@ function SignUp() {
             <button type="submit" id="google" disabled = {isLoading}>
               continue with google
             </button>
+            {success}
             <p>
               Already have have an account?
               <Link to="/signin">
