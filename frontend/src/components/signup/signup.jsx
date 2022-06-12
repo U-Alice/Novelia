@@ -2,8 +2,9 @@ import "./signup.css";
 import testimonies from "./testimonies";
 import BTNslider from "./slider/buttonSlider.jsx";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserContext from "./userContext";
+import LoadingSpinner from "../spinner/spinner";
 function SignUp() {
   const [slideIndex, setSlideIndex] = useState(1);
   const nextSlide = () => {
@@ -24,7 +25,7 @@ function SignUp() {
       console.log(slideIndex);
     }
   };
-  
+  const [isLoading, setLoading] = useState(false)
   const [error, setError] = useState("");
   const[ success, setSuccess] = useState("")
   const [data, setData] = useState({
@@ -36,9 +37,11 @@ function SignUp() {
   const handleInputChange = ({currentTarget: input})=>{
       setData({...data,[input.name]: input.value})
   }
+  const Navigate = useNavigate("")
 
   const getUser = async (e) => {
     e.preventDefault()
+    setLoading(true)
    await fetch("http://localhost:4001/register", {
       method: "POST", // or 'PUT'
       headers: {
@@ -49,6 +52,7 @@ function SignUp() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        setLoading(false)
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -72,6 +76,7 @@ function SignUp() {
         </div>
       </div>
       <div className="form">
+           {isLoading ? <LoadingSpinner/> : Navigate('/welcome')}
         <div>
           <h1 id="welcome">Welcome to BOK</h1>
           <i class="fa-solid fa-user-plus"></i>
@@ -83,6 +88,7 @@ function SignUp() {
               name="userName"
               value={data.userName}
               onChange={handleInputChange}
+              required
             />
             <input
               type="email"
@@ -90,6 +96,7 @@ function SignUp() {
               name="email"
               value={data.email}
               onChange={handleInputChange}
+              required
             />
             <input
               type="password"
@@ -97,12 +104,14 @@ function SignUp() {
               name="password"
               value={data.password}
               onChange={handleInputChange}
+              required
             />
             <input type="password" placeholder="Confirm Password" />
-            <button type="submit" id="submit">
+        
+            <button type="submit" id="submit" disabled={isLoading}>
               Sign UP
             </button>
-            <button type="submit" id="google">
+            <button type="submit" id="google" disabled = {isLoading}>
               continue with google
             </button>
             <p>
