@@ -24,25 +24,35 @@ function SignUp() {
       console.log(slideIndex);
     }
   };
+  
+  const [error, setError] = useState("");
+  const[ success, setSuccess] = useState("")
   const [data, setData] = useState({
     email: "",
-    username: "",
+    userName: "",
     password: "",
   });
 
-  const handleInputChange = ()=>{
+  const handleInputChange = ({currentTarget: input})=>{
       setData({...data,[input.name]: input.value})
   }
 
-  const getUser = async () => {
-    const api = await fetch("localhost:4001/register", {
-      method: "POST",
+  const getUser = async (e) => {
+    e.preventDefault()
+   await fetch("http://localhost:4001/register", {
+      method: "POST", // or 'PUT'
       headers: {
-        "content-Type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
-    const data = api.json();
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
   return (
     <div className="main">
@@ -70,8 +80,8 @@ function SignUp() {
             <input
               type="text"
               placeholder="Username"
-              name="username"
-              value={data.username}
+              name="userName"
+              value={data.userName}
               onChange={handleInputChange}
             />
             <input
@@ -85,7 +95,7 @@ function SignUp() {
               type="password"
               placeholder="password"
               name="password"
-              value={data.username}
+              value={data.password}
               onChange={handleInputChange}
             />
             <input type="password" placeholder="Confirm Password" />
