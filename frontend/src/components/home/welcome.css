@@ -4,7 +4,7 @@
   margin: 0;
 }
 .navbar {
-  height: 10vh;
+  height: 7vh;
   width: 100%;
   background-color: white;
   display: flex;
@@ -86,4 +86,36 @@
 }
 .listItem button{
    width: 100%;
+}
+#subscribe {
+background-color: #612d08;
+border: none;
+width: 10%;
+color: white;
+font-size: 1.2em;
+display: inline;
+
+}
+.subscribe div{
+ width: 100%;
+ margin-top: 2%;
+}
+.subscribe{
+  background-image: url("https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGJvb2slMjBhbmQlMjBsaWdodHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+color: white;
+font-weight: bold;
+  display: flex;
+  background-repeat: 2;
+
+justify-content: center;
+align-items: center;
+text-align: center;
+width: 100%;
+}
+.subscribe input{
+  margin-top: 2%;
+width: 40%;
+font-size: 1.1em;
+border-radius: 0px;
+display: inline;
 }

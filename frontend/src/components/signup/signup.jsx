@@ -24,6 +24,26 @@ function SignUp() {
       console.log(slideIndex);
     }
   };
+  const [data, setData] = useState({
+    email: "",
+    username: "",
+    password: "",
+  });
+
+  const handleInputChange = ()=>{
+      setData({...data,[input.name]: input.value})
+  }
+
+  const getUser = async () => {
+    const api = await fetch("localhost:4001/register", {
+      method: "POST",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const data = api.json();
+  };
   return (
     <div className="main">
       <div className="picture">
@@ -46,10 +66,28 @@ function SignUp() {
           <h1 id="welcome">Welcome to BOK</h1>
           <i class="fa-solid fa-user-plus"></i>
           <h3 id="signup">SIGN UP</h3>
-          <form action="">
-            <input type="text" placeholder="Username" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="password" />
+          <form action="" onSubmit={getUser}>
+            <input
+              type="text"
+              placeholder="Username"
+              name="username"
+              value={data.username}
+              onChange={handleInputChange}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={data.email}
+              onChange={handleInputChange}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              name="password"
+              value={data.username}
+              onChange={handleInputChange}
+            />
             <input type="password" placeholder="Confirm Password" />
             <button type="submit" id="submit">
               Sign UP

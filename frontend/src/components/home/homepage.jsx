@@ -3,6 +3,7 @@ import Body from "./body";
 import Books from "./books";
 import DisplayBooks from "./displayBooks";
 import Navbar from "./navbar";
+import Subscribe from "./subscribe";
 import "./welcome.css";
 
 function Welcome() {
@@ -13,6 +14,7 @@ function Welcome() {
         < Body />
         <Books />
         <DisplayBooks />
+        <Subscribe />
         <Footer />
       </div>
     </div>
