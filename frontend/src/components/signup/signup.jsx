@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "./userContext";
 import LoadingSpinner from "../spinner/spinner";
+import { useEffect } from "react";
 function SignUp() {
   const [slideIndex, setSlideIndex] = useState(1);
   const nextSlide = () => {
@@ -25,6 +26,23 @@ function SignUp() {
       console.log(slideIndex);
     }
   };
+
+  function InvalidMsg(textbox) {
+  
+    // if (textbox.value === '') {
+    //     textbox.setCustomValidity
+    //           ('Entering an email-id is necessary!');
+    // } else if (textbox.validity.typeMismatch) {
+    //     textbox.setCustomValidity
+    //           ('Please enter an email address which is valid!');
+    // } else {
+    //     textbox.setCustomValidity('');
+    // }
+
+    // return true;
+    console.log(textbox)
+  }
+
   const [isLoading, setLoading] = useState(false)
   const [error, setError] = useState("");
   const[ success, setSuccess] = useState("")
@@ -37,7 +55,14 @@ function SignUp() {
   const handleInputChange = ({currentTarget: input})=>{
       setData({...data,[input.name]: input.value})
   }
+  const [navigate , setNavigate] = useState(true)
   const Navigate = useNavigate("")
+
+
+     useEffect(()=>{
+       Navigate("/welcome")
+      }, navigate)
+    }
 
   const getUser = async (e) => {
     e.preventDefault()
@@ -76,7 +101,7 @@ function SignUp() {
         </div>
       </div>
       <div className="form">
-           {isLoading ? <LoadingSpinner/> : Navigate('/welcome')}
+           {isLoading ? <LoadingSpinner/> : setNavigate(true)}
         <div>
           <h1 id="welcome">Welcome to BOK</h1>
           <i class="fa-solid fa-user-plus"></i>
@@ -88,6 +113,7 @@ function SignUp() {
               name="userName"
               value={data.userName}
               onChange={handleInputChange}
+              // onInput={InvalidMsg(this)}
               required
             />
             <input
@@ -96,6 +122,7 @@ function SignUp() {
               name="email"
               value={data.email}
               onChange={handleInputChange}
+              // onInput={InvalidMsg(this)}
               required
             />
             <input
@@ -104,6 +131,7 @@ function SignUp() {
               name="password"
               value={data.password}
               onChange={handleInputChange}
+              // onInput={InvalidMsg(this)}
               required
             />
             <input type="password" placeholder="Confirm Password" />
