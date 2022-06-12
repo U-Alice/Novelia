@@ -55,14 +55,11 @@ function SignUp() {
   const handleInputChange = ({currentTarget: input})=>{
       setData({...data,[input.name]: input.value})
   }
-  const [navigate , setNavigate] = useState(true)
   const Navigate = useNavigate("")
 
 
-     useEffect(()=>{
-       Navigate("/welcome")
-      }, navigate)
-    }
+  //  Navigate("/welcome")
+
 
   const getUser = async (e) => {
     e.preventDefault()
@@ -101,7 +98,7 @@ function SignUp() {
         </div>
       </div>
       <div className="form">
-           {isLoading ? <LoadingSpinner/> : setNavigate(true)}
+           {isLoading ? <LoadingSpinner/> : ""}
         <div>
           <h1 id="welcome">Welcome to BOK</h1>
           <i class="fa-solid fa-user-plus"></i>
