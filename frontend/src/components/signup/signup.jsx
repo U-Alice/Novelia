@@ -40,9 +40,8 @@ function SignUp() {
     }
 
     return true;
-    console.log(textbox.target)
   }
-
+  const Navigate = useNavigate("")
   const [isLoading, setLoading] = useState(false)
   const [error, setError] = useState("");
   const[ success, setSuccess] = useState("")
@@ -72,6 +71,9 @@ function SignUp() {
         console.log("Success:", data);
         setSuccess(data.message)
         setLoading(false)
+        if(data.success === "success"){
+          Navigate("/welcome")
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -136,7 +138,7 @@ function SignUp() {
             <button type="submit" id="google" disabled = {isLoading}>
               continue with google
             </button>
-            {success}
+            <p className="message">{success}</p>
             <p>
               Already have have an account?
               <Link to="/signin">

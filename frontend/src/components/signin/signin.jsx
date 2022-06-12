@@ -1,12 +1,14 @@
 import "../signup/signup.css";
 import Button from "../utils/buttons";
 import { Link } from "react-router-dom";
+import LoadingSpinner from "../spinner/spinner";
 function SignIn() {
   return (
     <div className="main">
       <div className="picture"></div>
       <div className="formLogin">
         <h1>Welcome Back</h1>
+      {isLoading ? <LoadingSpinner/> : ""}
         
           <i class="fa-solid fa-user-plus"></i>
           <h3 id="signup">Login</h3>

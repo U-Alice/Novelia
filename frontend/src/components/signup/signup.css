@@ -146,3 +146,7 @@ form{
 .formLogin #submit{
     margin-left: 22%;
 }
+.message{
+    color: #612D08;
+    text-decoration: wavy;
+}
