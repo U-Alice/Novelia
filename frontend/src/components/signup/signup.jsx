@@ -97,11 +97,12 @@ function SignUp() {
         </div>
       </div>
       <div className="form">
-           {isLoading ? <LoadingSpinner/> : ""}
+        
         <div>
           <h1 id="welcome">Welcome to BOK</h1>
           <i class="fa-solid fa-user-plus"></i>
-          <h3 id="signup">SIGN UP</h3>
+       
+          {isLoading ? <LoadingSpinner/> :<h3 id="signup">SIGN UP</h3>}
           <form action="" onSubmit={getUser}>
             <input
               type="text"

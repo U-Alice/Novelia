@@ -7,11 +7,20 @@ function Body() {
         <div>
           <h1>Find all novels for all genres</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta est
-            tempore placeat. Cumque vel velit suscipit vero tempora possimus
-            fugiat dolorum obcaecati repudiandae. Ducimus, tenetur minima nisi
-            tempore illum minus!
+            Not sure what to read! discover your taste and enjoy over 1 thousand
+            book samples and their sources, join our community to discover more.
           </p>
+        </div>
+        <div className="images">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1631282611i/55148022.jpg"
+            alt=""
+          />
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1524697191i/39900826.jpg"
+            alt=""
+            className="secondImage"
+          />
         </div>
       </div>
     </div>

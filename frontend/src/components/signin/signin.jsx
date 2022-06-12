@@ -8,7 +8,7 @@ function SignIn() {
       <div className="picture"></div>
       <div className="formLogin">
         <h1>Welcome Back</h1>
-      {isLoading ? <LoadingSpinner/> : ""}
+      {/* {isLoading ? <LoadingSpinner/> : ""} */}
         
           <i class="fa-solid fa-user-plus"></i>
           <h3 id="signup">Login</h3>
