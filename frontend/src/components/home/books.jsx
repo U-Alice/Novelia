@@ -7,34 +7,89 @@ function Books() {
         </div>
         <div className="top3Books">
           <div className="topBooks">
-            <p>Name</p>
-            <p>Author Name</p>
-            <p>rating</p>
             <div>
-              <img src="" alt="" />
+              <p>Name</p>
+              <p>Author Name</p>
+              <p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </p>
+            </div>
+            <div>
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
+                alt=""
+              />
             </div>
           </div>
 
           <div className="topBooks">
-            <p>Name</p>
-            <p>Author Name</p>
-            <p>rating</p>
             <div>
-              <img src="" alt="" />
+              <p>Name</p>
+              <p>Author Name</p>
+              <p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </p>
+            </div>
+            <div>
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
+                alt=""
+              />
             </div>
           </div>
           <div className="topBooks">
-            <p>Name</p>
-            <p>Author Name</p>
-            <p>rating</p>
             <div>
-              <img src="" alt="" />
+              <p>Name</p>
+              <p>Author Name</p>
+              <p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </p>
+            </div>
+            <div>
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
+                alt=""
+              />
             </div>
           </div>
-        </div>  
+        </div>
       </div>
-      <div className="top" id="buy">
-        <h1>Buy& Get 1 free on NOvelia</h1>
+      <div className="buy" id="buy">
+        <div id="text">
+          <h1>Read on Novelia anytime on our app</h1>
+        </div>
+        <div id="cards">
+          <div className="app">
+          <i class="fa-brands fa-google-play app-icon"></i>
+            <div>
+            <p>Download on the</p>
+            <h3>Apple Store </h3>
+            </div>
+          </div>
+          <div className="app">
+            <i class="fa-brands fa-apple app-icon"></i>
+            <div>
+            <p>Download on the</p>
+            <h3>Apple Store </h3>
+            </div>
+          </div>
+          <div>
+            <img src="phone.png" alt="" />
+          </div>
+        </div>
       </div>
     </div>
   );
