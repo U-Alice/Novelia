@@ -61,7 +61,7 @@ function DisplayBooks() {
   return (
     <div>
       <div className="heading">
-        <h1>Trending Now</h1>
+        <h2>Trending Now</h2>
       </div>
       <div className="list">
         {trendingBooks.map((item) => {
@@ -80,7 +80,7 @@ function DisplayBooks() {
       </div>
 
       <div className="heading">
-        <h1>Science</h1>
+        <h2>Science</h2>
       </div>
       <div className="list">
         {scienceBooks.map((item) => {
@@ -99,7 +99,7 @@ function DisplayBooks() {
       </div>
 
       <div className="heading">
-        <h1>Romance</h1>
+        <h3>Romance</h3>
       </div>
       <div className="list">
         {romance.map((item) => {
@@ -117,7 +117,7 @@ function DisplayBooks() {
         })}
       </div>
       <div className="heading">
-        <h1>Horror</h1>
+        <h2>Horror</h2>
       </div>
       <div className="list">
         {horror.map((item) => {
