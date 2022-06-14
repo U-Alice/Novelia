@@ -27,6 +27,8 @@ function All() {
             her life around. Once he sets his eyes on Maisie, he knows she
             belongs to him.
           </p>
+          <button>Start Reading</button>
+
         </div>
       </div>
       <div className="lib">
@@ -46,6 +48,8 @@ function All() {
             her life around. Once he sets his eyes on Maisie, he knows she
             belongs to him.
           </p>
+          <button>Start Reading</button>
+
         </div>
       </div>
       <div className="lib">
@@ -65,6 +69,8 @@ function All() {
             her life around. Once he sets his eyes on Maisie, he knows she
             belongs to him.
           </p>
+          <button>Start Reading</button>
+
         </div>
       </div>
       <div className="lib">
@@ -84,6 +90,8 @@ function All() {
             her life around. Once he sets his eyes on Maisie, he knows she
             belongs to him.
           </p>
+          <button>Start Reading</button>
+
         </div>
       </div>
       <div className="lib">
@@ -103,6 +111,7 @@ function All() {
             her life around. Once he sets his eyes on Maisie, he knows she
             belongs to him.
           </p>
+          <button>Start Reading</button>
         </div>
       </div>
     </div>
