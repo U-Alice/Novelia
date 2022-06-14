@@ -31,7 +31,7 @@ function Books() {
               <img src="" alt="" />
             </div>
           </div>
-        </div>
+        </div>  
       </div>
       <div className="top" id="buy">
         <h1>Buy& Get 1 free on NOvelia</h1>

@@ -99,7 +99,7 @@ function SignUp() {
       <div className="form">
         
         <div>
-          <h1 id="welcome">Welcome to BOK</h1>
+          <h1 id="welcome">Welcome to Novelia</h1>
           <i class="fa-solid fa-user-plus"></i>
        
           {isLoading ? <LoadingSpinner/> :<h3 id="signup">SIGN UP</h3>}

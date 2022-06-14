@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function DisplayBooks() {
-  const [books, setBooks] = useState([]);
+  const [trendingBooks, setTrending] = useState([]);
+  const [scienceBooks, setScienceBooks] = useState([]);
+  const [romance, setRomance] = useState([]);
+  const [horror, setHorror] = useState([]);
+
   const GetBooks = async () => {
     await fetch("http://localhost:4001/getBooks", {
       method: "GET",
@@ -9,32 +13,126 @@ function DisplayBooks() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
-        setBooks(data.books);
+        setTrending(data.books);
       });
   };
-  GetBooks();
+  const science = async () => {
+    await fetch("http://localhost:4001/getByGenre?genre=science", {
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setScienceBooks(data.books);
+      });
+  };
+  const romanceBooks = async () => {
+    await fetch("http://localhost:4001/getByGenre?genre=romance", {
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => { 
+        setRomance(data.books);
+      });
+  };
+  const horrorBooks = async () => {
+    await fetch("http://localhost:4001/getByGenre?genre=horror", {
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => { 
+        setHorror(data.books);
+      });
+  };
+
+  useEffect(() => {
+    GetBooks();
+    romanceBooks();
+    horrorBooks();
+    science();
+  }, []);
+
   return (
     <div>
       <div className="heading">
         <h1>Trending Now</h1>
       </div>
       <div className="list">
-        {books.map((item) => {
-          return  (
+        {trendingBooks.map((item) => {
+          return (
             <div className="listItem">
-            <div className="image">
-              <img src={item.imgUrl} alt="preview image" />
+              <div className="image">
+                <img src={item.imgUrl} alt="preview image" />
+              </div>
+              <div>
+                <p>{item.title}</p>
+                <button>View Summary</button>
+              </div>
             </div>
-            <div>
-              <p>{item.title}</p>
-              <button>View Summary</button>
-            </div>
-          </div>
-          )
+          );
         })}
+      </div>
 
-       
+      <div className="heading">
+        <h1>Science</h1>
+      </div>
+      <div className="list">
+        {scienceBooks.map((item) => {
+          return (
+            <div className="listItem">
+              <div className="image">
+                <img src={item.cover} alt="preview image" />
+              </div>
+              <div>
+                <p>{item.name}</p>
+                <button>View Summary</button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="heading">
+        <h1>Romance</h1>
+      </div>
+      <div className="list">
+        {romance.map((item) => {
+          return (
+            <div className="listItem">
+              <div className="image">
+                <img src={item.cover} alt="preview image" />
+              </div>
+              <div>
+                <p>{item.name}</p>
+                <button>View Summary</button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="heading">
+        <h1>Horror</h1>
+      </div>
+      <div className="list">
+        {horror.map((item) => {
+          return (
+            <div className="listItem">
+              <div className="image">
+                <img src={item.cover} alt="preview image" />
+              </div>
+              <div>
+                <p>{item.name}</p>
+                <button>View Summary</button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
