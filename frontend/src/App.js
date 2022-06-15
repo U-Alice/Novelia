@@ -9,6 +9,7 @@ import Pending from "./components/Library/pending";
 import Completed from "./components/Library/completed";
 import List from "./components/Library/ReadingList";
 import Publish from "./components/publish/publish";
+import Preview from "./components/preview/preview";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/completed" element={<Completed />} />
           <Route path="/list" element={<List />} />
           <Route path="/publish" element={<Publish />} />
+          <Route path="/preview" element={<Preview />} />
         </Routes>
       </Router>
     </div>
