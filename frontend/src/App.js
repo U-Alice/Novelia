@@ -6,6 +6,7 @@ import Home from './components/landingPage/home';
 import Welcome from './components/home/homepage';
 import All from './components/Library/all';
 import Pending from './components/Library/pending';
+import Completed from './components/Library/completed';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="/welcome" element = {< Welcome/>}/>
         <Route path="/library" element = {< All/>}/>
          <Route path="/pending" element = {< Pending/>}/>
+         <Route path="/completed" element = {< Completed/>}/>
+
         </Routes>
       </Router>
 

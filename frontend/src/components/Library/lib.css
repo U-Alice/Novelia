@@ -84,6 +84,10 @@
 .libItem p:nth-child(3){
     color: #D74D00;
 }
+.libItem h6{
+ color: #612D08;
+ margin-left: 20%;
+}
 .libImage img{
     box-shadow: 0px 4px 20px 3px rgba(111, 78, 78, 0.7);
     width: 100%;
