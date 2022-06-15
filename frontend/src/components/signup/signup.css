@@ -48,16 +48,16 @@ background-size: cover;
     margin-top: 20%;
     width: 100%;
 }
-input, button{
+.main input, button{
     display: block;
     margin-bottom:5%;
     height: 45px;
     width: 92%;
 }
-input:focus{
+.main input:focus{
     outline:none;
 }
-input{
+.main input{
     border:1px solid rgba(139, 138, 138, 0.411);
     border-radius: 6px;
     padding-left: 4%;
@@ -79,7 +79,7 @@ input{
     border: 1px solid rgba(139, 138, 138, 0.4);
     background-color: white;
 }
-form{
+.main form{
     margin-top: 5%;
 }
 #redirect{

@@ -10,6 +10,7 @@ function Pending() {
         <div className="libItem">
           <div className="libImage">
             <img
+            id="libImage"
               src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
               alt=""
             />
@@ -21,6 +22,7 @@ function Pending() {
         <div className="libItem">
           <div className="libImage">
             <img
+            id="libImage"
               src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
               alt=""
             />
@@ -32,6 +34,7 @@ function Pending() {
         <div className="libItem">
           <div className="libImage">
             <img
+            id="libImage"
               src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
               alt=""
             />
@@ -43,6 +46,7 @@ function Pending() {
         <div className="libItem">
           <div className="libImage">
             <img
+            id="libImage"
               src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
               alt=""
             />
@@ -54,6 +58,7 @@ function Pending() {
         <div className="libItem">
           <div className="libImage">
             <img
+            id="libImage"
               src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
               alt=""
             />
@@ -65,6 +70,7 @@ function Pending() {
         <div className="libItem">
           <div className="libImage">
             <img
+            id="libImage"
               src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
               alt=""
             />
