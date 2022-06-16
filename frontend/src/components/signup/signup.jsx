@@ -3,7 +3,7 @@ import testimonies from "./testimonies";
 import BTNslider from "./slider/buttonSlider.jsx";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import UserContext from "./userContext";
+// import UserContext from "./userContext";
 import LoadingSpinner from "../spinner/spinner";
 import { useEffect } from "react";
 function SignUp() {
@@ -147,7 +147,6 @@ function SignUp() {
               </Link>
             </p>
           </form>
-          <UserContext.Provider></UserContext.Provider>
         </div>
       </div>
     </div>
