@@ -13,6 +13,6 @@ async function getUser(username, password) {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      return (data);
     });
 }

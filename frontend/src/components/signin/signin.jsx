@@ -11,16 +11,16 @@ function SignIn() {
     email: "",
     password: "",
   });
+  const [response, setResponse] = useState("")
   const user = useContext(userContext);
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    user.getUser(data.email, data.password);
+    const returned = user.getUser(data.email, data.password);
+    setResponse(await returned)
   };
   const handleChange = ({ currentTarget: input }) => {
-    // setData(...data, { [input.name]: [input.value] });
     setData({ ...data, [input.name]: input.value });
   };
-  // {user}
   return (
     <div className="main">
       <div className="picture"></div>
@@ -44,6 +44,7 @@ function SignIn() {
             onChange={handleChange}
             value={data.password}
           />
+          <p>{response.message}</p>
           <button type="submit" id="submit">
             Sign In
           </button>
