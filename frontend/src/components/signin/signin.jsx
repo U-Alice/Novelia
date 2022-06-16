@@ -1,12 +1,13 @@
 import "../signup/signup.css";
 import Button from "../utils/buttons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoadingSpinner from "../spinner/spinner";
 import { useContext } from "react";
 import { userContext } from "../userContext";
 import { useState } from "react";
 
 function SignIn() {
+  const Navigate = useNavigate("");
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -17,6 +18,9 @@ function SignIn() {
     e.preventDefault();
     const returned = user.getUser(data.email, data.password);
     setResponse(await returned)
+    if(response.success === true){
+      Navigate("/welcome")
+    }
   };
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
