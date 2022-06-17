@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { userContext } from "../userContext";
+
 function Navbar() {
+  const userProfile = useContext(userContext);
   return (
     <div className="navbar">
       <div>
@@ -11,7 +15,7 @@ function Navbar() {
         <a href="">Adventure </a>
       </div>
       <div>
-        <a> <i class="fa-solid fa-magnifying-glass"></i></a>
+        <a> <i class="fa-solid fa-magnifying-glass"></i> <p>{}</p></a>
         <a><i class="fa-solid fa-circle-user"></i></a>
       </div>
     </div>

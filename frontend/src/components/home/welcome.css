@@ -160,7 +160,7 @@
   background-color: #6d3914;
   border: none;
   color: white;
-  margin-left: 20%;
+  margin-left: 15%;
   width: 60%;
 
 }
@@ -177,14 +177,15 @@
   overflow-x: auto;
 }
 .image {
-  width: 90%;
+  width: 70%;
   margin-left: 4%;
-  height: 30vh;
+  height: 28vh;
   box-shadow: 0px 4px 20px 3px rgba(111, 78, 78, 0.342);
+  margin-left: 10%;
   /* border-radius: 10px; */
 }
 .image img{
-  height: 30vh;
+  height: 28vh;
   /* border-radius:10px ; */
   width: 100%;
 }

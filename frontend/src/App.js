@@ -9,23 +9,26 @@ import Completed from "./components/Library/completed";
 import List from "./components/Library/ReadingList";
 import Publish from "./components/publish/publish";
 import Preview from "./components/preview/preview";
+import { UserProvider } from "./components/userContext";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route path="/signIn" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/library" element={<All />} />
-          <Route path="/pending" element={<Pending />} />
-          <Route path="/completed" element={<Completed />} />
-          <Route path="/list" element={<List />} />
-          <Route path="/publish" element={<Publish />} />
-          <Route path="/preview" element={<Preview />} />
-        </Routes>
+        <UserProvider>
+          <Routes>
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/library" element={<All />} />
+            <Route path="/pending" element={<Pending />} />
+            <Route path="/completed" element={<Completed />} />
+            <Route path="/list" element={<List />} />
+            <Route path="/publish" element={<Publish />} />
+            <Route path="/preview" element={<Preview />} />
+          </Routes>
+        </UserProvider>
       </Router>
     </div>
   );
