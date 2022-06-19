@@ -10,6 +10,7 @@ import List from "./components/Library/ReadingList";
 import Publish from "./components/publish/publish";
 import Preview from "./components/preview/preview";
 import { UserProvider } from "./components/userContext";
+import UploadImage from "./components/signup/uploadImage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/list" element={<List />} />
             <Route path="/publish" element={<Publish />} />
             <Route path="/preview" element={<Preview />} />
+            <Route path="/upload" element={<UploadImage/>}/>
           </Routes>
         </UserProvider>
       </Router>

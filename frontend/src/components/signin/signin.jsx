@@ -12,14 +12,15 @@ function SignIn() {
     email: "",
     password: "",
   });
-  const [response, setResponse] = useState("")
-  const user = useContext(userContext);
-  const handleSubmit =async (e) => {
+  const [response, setResponse] = useState({});
+  const { user, userDetails } = useContext(userContext);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const returned = user.getUser(data.email, data.password);
-    setResponse(await returned)
-    if(response.success === true){
-      Navigate("/welcome")
+    user.getUser(data.email, data.password);
+    console.log(userDetails);
+    localStorage.setItem("token", userDetails.data.token);
+    if (userDetails.success === true) {
+      Navigate("/welcome");
     }
   };
   const handleChange = ({ currentTarget: input }) => {
@@ -30,6 +31,7 @@ function SignIn() {
       <div className="picture"></div>
       <div className="formLogin">
         <h1>Welcome Back</h1>
+        {/* <p>{user.email}</p> */}
         <i class="fa-solid fa-user-plus"></i>
         <h3 id="signup">Login</h3>
 

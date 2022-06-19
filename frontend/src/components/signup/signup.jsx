@@ -132,7 +132,6 @@ function SignUp() {
               required
             />
             <input type="password" placeholder="Confirm Password" />
-        
             <button type="submit" id="submit" disabled={isLoading}>
               Sign UP
             </button>
