@@ -6,7 +6,8 @@ function UploadImage(){
     const handleFileChange = (e) => {
       setFile(e.target.files[0])
     }
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
+        e.preventDefault()
         const formData = new FormData()
         fetch("http://localhost:4001/addProfile",{
             method: "POST",

@@ -5,9 +5,13 @@ function DisplayBooks() {
   const [romance, setRomance] = useState([]);
   const [horror, setHorror] = useState([]);
 
+  const token = localStorage.getItem("token");
   const GetBooks = async () => {
     await fetch("http://localhost:4001/getBooks", {
       method: "GET",
+      headers: {
+        "authorization": `Bearer ${token}`,
+      }
     })
       .then((res) => {
         return res.json();
@@ -19,6 +23,9 @@ function DisplayBooks() {
   const science = async () => {
     await fetch("http://localhost:4001/getByGenre?genre=science", {
       method: "GET",
+      headers: {
+        "authorization": `Bearer ${token}`,
+      }
     })
       .then((res) => {
         return res.json();
@@ -31,6 +38,9 @@ function DisplayBooks() {
   const romanceBooks = async () => {
     await fetch("http://localhost:4001/getByGenre?genre=romance", {
       method: "GET",
+      headers: {
+        "authorization": `Bearer ${token}`,
+      }
     })
       .then((res) => {
         return res.json();
@@ -42,6 +52,9 @@ function DisplayBooks() {
   const horrorBooks = async () => {
     await fetch("http://localhost:4001/getByGenre?genre=horror", {
       method: "GET",
+      headers: {
+        "authorization": `Bearer ${token}`,
+      }
     })
       .then((res) => {
         return res.json();
