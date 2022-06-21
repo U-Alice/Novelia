@@ -13,10 +13,11 @@ function SignIn() {
     password: "",
   });
   const [response, setResponse] = useState({});
-  const { user, userDetails } = useContext(userContext);
+  const { user, userDetails, getProfile } = useContext(userContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
     user.getUser(data.email, data.password);
+    getProfile();
     console.log(userDetails);
     localStorage.setItem("token", userDetails.data.token);
     if (userDetails.success === true) {

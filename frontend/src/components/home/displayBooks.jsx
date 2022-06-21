@@ -6,7 +6,6 @@ function DisplayBooks() {
   const [horror, setHorror] = useState([]);
 
   const token = localStorage.getItem("token");
-  console.log(token)
   const GetBooks = async () => {
     await fetch("http://localhost:4001/getBooks", {
       method: "GET",
