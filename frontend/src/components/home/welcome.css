@@ -1,6 +1,7 @@
 * {
   font-family: "poppins";
   padding: 0;
+  box-sizing: border-box;
   margin: 0;
 }
 .navbar {
@@ -22,6 +23,25 @@
   gap: 10%;
   margin-left: 10%;
   margin-top: 1%;
+}
+.name {
+  color: #612d08;
+  font-size: 1.2em;
+  font-family: 'arima Madurai';
+  font-weight: bold;
+  margin-left: 40%;
+}
+.navImage{
+  width: 100%;
+  height: 100%;
+}
+.navImage img{
+  top: 5;
+  width: 18%;
+  position: relative;
+  height: 90%;
+  border-radius: 100%;
+  margin-top: -4%;
 }
 .navbar div a{
   color: black;
