@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import Cookie from "react-cookies"
 export const userContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({ getUser });
@@ -17,7 +18,15 @@ export const UserProvider = ({ children }) => {
     });
     const data = await api.json();
     setDetails(data);
+    handleCookie(data.firstName)
+    // setCookie ("name", data.)
   }
+  function handleCookie(cookieName,cookie1, cookie2, cookie3){
+    Cookie.set(cookieName, cookie1, {
+      path: "/"
+    })
+  }
+
   async function getProfile(){
     const url = "http://localhost:4001/getProfile";
     const api = await fetch(url, {

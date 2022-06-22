@@ -3,7 +3,6 @@ import { userContext } from "../userContext";
 
 function Navbar() {
   const { getProfile, profile, userDetails } = useContext(userContext);
-  console.log(profile.profile);
   return (
     <div className="navbar">
       <div>

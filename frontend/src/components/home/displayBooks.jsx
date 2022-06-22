@@ -31,7 +31,6 @@ function DisplayBooks() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setScienceBooks(data.books);
       });
   };
