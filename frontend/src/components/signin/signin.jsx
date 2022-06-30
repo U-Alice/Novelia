@@ -2,10 +2,10 @@ import "../signup/signup.css";
 import Button from "../utils/buttons";
 import { Link, useNavigate } from "react-router-dom";
 import LoadingSpinner from "../spinner/spinner";
+import Cookies from "js-cookie";
 import { useContext } from "react";
 import { userContext } from "../userContext";
 import { useState } from "react";
-
 function SignIn() {
   const Navigate = useNavigate("");
   const [data, setData] = useState({
@@ -13,13 +13,25 @@ function SignIn() {
     password: "",
   });
   const [response, setResponse] = useState({});
-  const { user, userDetails, getProfile } = useContext(userContext);
+  const { getUser, userDetails, getProfile, profile } = useContext(userContext);
+
+  function handleCookie(cookieName, cookieValue) {
+    let expires = new Date();
+    Cookies.set(cookieName, cookieValue, { expires: 360, path: "" });
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    user.getUser(data.email, data.password);
-    getProfile();
+    await getUser(data.email, data.password);
+    await getProfile();
     console.log(userDetails);
-    localStorage.setItem("token", userDetails.data.token);
+
+    handleCookie("userName", userDetails.data.userName);
+    handleCookie("token", userDetails.data.token);
+    localStorage.setItem("profile", userDetails.profile.image)
+    handleCookie("profile", "image")
+   
+
+
     if (userDetails.success === true) {
       Navigate("/welcome");
     }

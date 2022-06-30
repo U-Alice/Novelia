@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 function DisplayBooks() {
   const [trendingBooks, setTrending] = useState([]);
@@ -5,9 +6,9 @@ function DisplayBooks() {
   const [romance, setRomance] = useState([]);
   const [horror, setHorror] = useState([]);
 
-  const token = localStorage.getItem("token");
+  const token = Cookies.get("token");
   const GetBooks = async () => {
-    await fetch("http://localhost:4001/getBooks", {
+    await fetch("http://localhost:4001/topTen", {
       method: "GET",
       headers: {
         "authorization": `Bearer ${token}`,
@@ -109,7 +110,7 @@ function DisplayBooks() {
           );
         })}
       </div>
-
+ 
       <div className="heading">
         <h3>Romance</h3>
       </div>
@@ -122,7 +123,7 @@ function DisplayBooks() {
               </div>
               <div>
                 <p>{item.name}</p>
-                <button>View Summary</button>
+                <button onClick={handlePreview}>View Summary</button>
               </div>
             </div>
           );
