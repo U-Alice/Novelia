@@ -1,7 +1,24 @@
+import Cookies from "js-cookie";
+import { useEffect } from "react";
+import { useState } from "react";
 import Navbar from "../home/navbar";
-import Pending from "../Library/pending";
 import "./preview.css";
 function Preview() {
+  const [book , setBook] = useState({})
+  const token = Cookies.get("token");
+  async function getBook(){
+    const api = await fetch(`localhost:4001/getBooks/id`, {
+      method:"GET",
+      headers:{
+        Authorization: "Bearer " + token
+      }
+    })
+    const data = await api.json();
+    setBook(data.book)
+  }
+  useEffect(()=>{
+    getBook()
+  })
   return (
     <div className="preview">
       <Navbar />
@@ -11,38 +28,12 @@ function Preview() {
           alt=""
         />
         <div className="summaryDesc">
-          <h4>His Second Chance</h4>
-          <h6>Author: Stephen Meyer</h6>
+          <h4>{book.title}</h4>
+          <h6>{book.Author}</h6>
           <div>
             <h1>Summary</h1>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis
-              officia pariatur harum perspiciatis tempore nisi reiciendis
-              voluptates accusantium at deleniti eum minima repellendus
-              provident, neque nobis fugiat esse? Illum, vero! Lorem ipsum dolor
-              sit amet, consectetur adipisicing elit. Explicabo voluptatem magni
-              totam enim blanditiis tenetur consequuntur molestiae ratione cum
-              itaque aliquid, quaerat excepturi maiores eum incidunt animi
-              consequatur dignissimos. Ipsa. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Voluptates, voluptas perspiciatis
-              culpa omnis eaque ipsa, ullam dolorem eum porro repellendus
-              officiis voluptate, velit enim necessitatibus at quasi veniam
-              recusandae sunt? Lorem ipsum, dolor sit amet consectetur
-              adipisicing elit. Similique, repellat. Possimus rerum illo
-              consequatur nostrum ab facere praesentium voluptas laborum
-              tempora? Minus ratione ullam praesentium reprehenderit enim
-              tempora accusantium dignissimos. Lorem ipsum dolor sit amet,
-              consectetur adipisicing elit. Consequuntur repellendus molestias,
-              dolore dolor, quod alias corrupti veritatis blanditiis
-              voluptatibus ut earum, autem facilis? Beatae neque nemo rerum
-              nihil quo delectus. Lorem ipsum dolor sit, amet consectetur
-              adipisicing elit. Voluptates, necessitatibus sint ad repellendus
-              distinctio molestiae voluptatem dignissimos atque temporibus, nemo
-              autem quibusdam? Recusandae odit quasi vel, rerum vero minima
-              impedit! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Officiis, quo! Veritatis vitae totam libero minima qui, delectus
-              optio mollitia reprehenderit neque fuga quia aut dolores. Tempore
-              nisi natus omnis autem.
+              {book.description}
             </p>
           </div>
           <div className="details">

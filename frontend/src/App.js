@@ -11,25 +11,28 @@ import Publish from "./components/publish/publish";
 import Preview from "./components/preview/preview";
 import { UserProvider } from "./components/userContext";
 import UploadImage from "./components/signup/uploadImage";
+import { BooksProvider } from "./components/booksContext";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <UserProvider>
-          <Routes>
-            <Route path="/signIn" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/welcome" element={<Welcome />} />
-            <Route path="/library" element={<All />} />
-            <Route path="/pending" element={<Pending />} />
-            <Route path="/completed" element={<Completed />} />
-            <Route path="/list" element={<List />} />
-            <Route path="/publish" element={<Publish />} />
-            <Route path="/preview" element={<Preview />} />
-            <Route path="/upload" element={<UploadImage/>}/>
-          </Routes>
+          <BooksProvider>
+            <Routes>
+              <Route path="/signIn" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/welcome" element={<Welcome />} />
+              <Route path="/library" element={<All />} />
+              <Route path="/pending" element={<Pending />} />
+              <Route path="/completed" element={<Completed />} />
+              <Route path="/list" element={<List />} />
+              <Route path="/publish" element={<Publish />} />
+              <Route path="/preview" element={<Preview />} />
+              <Route path="/upload" element={<UploadImage />} />
+            </Routes>
+          </BooksProvider>
         </UserProvider>
       </Router>
     </div>

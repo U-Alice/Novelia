@@ -1,76 +1,14 @@
 import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { booksContext } from "../booksContext";
 function DisplayBooks() {
-  const [trendingBooks, setTrending] = useState([]);
-  const [scienceBooks, setScienceBooks] = useState([]);
-  const [romance, setRomance] = useState([]);
-  const [horror, setHorror] = useState([]);
-
-  const token = Cookies.get("token");
-  const GetBooks = async () => {
-    await fetch("http://localhost:4001/topTen", {
-      method: "GET",
-      headers: {
-        "authorization": `Bearer ${token}`,
-      }
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setTrending(data.books);
-      });
-  };
-  const science = async () => {
-    await fetch("http://localhost:4001/getByGenre?genre=science", {
-      method: "GET",
-      headers: {
-        "authorization": `Bearer ${token}`,
-      }
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setScienceBooks(data.books);
-      });
-  };
-  const romanceBooks = async () => {
-    await fetch("http://localhost:4001/getByGenre?genre=romance", {
-      method: "GET",
-      headers: {
-        "authorization": `Bearer ${token}`,
-      }
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => { 
-        setRomance(data.books);
-      });
-  };
-  const horrorBooks = async () => {
-    await fetch("http://localhost:4001/getByGenre?genre=horror", {
-      method: "GET",
-      headers: {
-        "authorization": `Bearer ${token}`,
-      }
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => { 
-        setHorror(data.books);
-      });
-  };
-
-  useEffect(() => {
-    GetBooks();
-    romanceBooks();
-    horrorBooks();
-    science();
-  }, []);
-
+  
+const {trendingBooks , romance, horror, scienceBooks, retrieveBooks} = useContext(booksContext);
+retrieveBooks();
+console.log(trendingBooks)
+const handlePreview = (e)=>{
+    console.log(e.target.value)
+}
   return (
     <div>
       <div className="heading">
@@ -84,8 +22,8 @@ function DisplayBooks() {
                 <img src={item.imgUrl} alt="preview image" />
               </div>
               <div>
-                <p>{item.title}</p>
-                <button>View Summary</button>
+                <p>{item.title}</p> 
+                <button onClick={handlePreview} value={item._id}>View Summary</button>
               </div>
             </div>
           );
@@ -123,7 +61,7 @@ function DisplayBooks() {
               </div>
               <div>
                 <p>{item.name}</p>
-                <button onClick={handlePreview}>View Summary</button>
+                <button>View Summary</button>
               </div>
             </div>
           );
@@ -147,7 +85,9 @@ function DisplayBooks() {
           );
         })}
       </div>
+
     </div>
+    
   );
 }
 export default DisplayBooks;
