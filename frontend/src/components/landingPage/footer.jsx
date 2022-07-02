@@ -1,4 +1,6 @@
 import "./home.css";
+import Bottom from "./bottom"
+
 function Footer() {
   return (
     <div className="footer">
@@ -26,13 +28,11 @@ function Footer() {
           <div className="copyright">
             &copy copyright 2022 Inc. All rights reserved
           </div>
+          <Bottom />
         </div>
-      </div>
-      <div className="bottom">
-        <div>Logo</div>
-        <div>Made with In Canada, Ottawa</div>
       </div>
     </div>
   );
 }
+
 export default Footer;

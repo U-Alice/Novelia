@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useMemo } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import Bottom from "../landingPage/bottom";
 import Navbar from "../home/navbar";
 import "./preview.css";
 function Preview() {
@@ -42,12 +43,9 @@ function Preview() {
         />
         <div className="summaryDesc">
           <h4>
-            {() => {
-              console.log(book.title)
-              return book.title;  
-            }}
+            {book.title}
           </h4>
-          <h6>{book.Author}</h6>
+          <h6>{book.author}</h6>
           <div>
             <h1>Summary</h1>
             <p>{book.description}</p>
@@ -57,10 +55,10 @@ function Preview() {
               <p>Rating</p>
             </div>
             <div>
-              <p>Rating</p>
+              <p>title</p>
             </div>
             <div>
-              <p>Rating</p>
+              <p>price</p>
             </div>
             <div>
               <p>Rating</p>
@@ -68,6 +66,7 @@ function Preview() {
           </div>
         </div>
       </div>
+      <Bottom/>
     </div>
   );
 }
