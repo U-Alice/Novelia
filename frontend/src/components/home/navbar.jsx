@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 function Navbar() {
   const [name, setName] = Cookies.get("userName")
   const { profile, userDetails } = useContext(userContext);
-  console.log(name)
   return (
     <div className="navbar">
       <div>
