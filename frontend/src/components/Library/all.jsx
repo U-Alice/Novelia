@@ -5,8 +5,10 @@ import {useLocation} from "react-router-dom";
 import { useMemo } from "react";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
+import { useState } from "react";
 
 function All() {
+  const [list, setList] = useState({})
   const useQuery = () => {
     const { search } = useLocation();
     return useMemo(() => new URLSearchParams(search), [search]);
@@ -20,9 +22,10 @@ function All() {
       headers:{
         Authorization: "Bearer " + Cookies.get("token")
       }
-    })
+    })  
     let data = await api.json()
-    console.log(data)
+    setList(data.List)
+    console.log(list)
   }
   useEffect(()=>{
 getList()
