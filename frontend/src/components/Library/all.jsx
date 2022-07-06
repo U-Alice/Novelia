@@ -3,6 +3,8 @@ import LibraryNav from "./LibraryNav";
 import "./lib.css";
 import {useLocation} from "react-router-dom";
 import { useMemo } from "react";
+import Cookies from "js-cookie";
+import { useEffect } from "react";
 
 function All() {
   const useQuery = () => {
@@ -12,7 +14,19 @@ function All() {
   let query = useQuery();
   let id = query.get("id")
   console.log(id)
-
+  const getList = async ()=>{
+    const api = await fetch("http://localhost:4001/getList", {
+      method: 'GET', 
+      headers:{
+        Authorization: "Bearer " + Cookies.get("token")
+      }
+    })
+    let data = await api.json()
+    console.log(data)
+  }
+  useEffect(()=>{
+getList()
+  }, [])
   return (
     <div>
       <div>
