@@ -2,15 +2,17 @@ import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { useMemo } from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Bottom from "../landingPage/bottom";
 import Navbar from "../home/navbar";
 import "./preview.css";
+import {Link} from "react-router-dom";
 function Preview() {
   const useQuery = () => {
     const { search } = useLocation();
     return useMemo(() => new URLSearchParams(search), [search]);
   };
+  const Navigate = useNavigate("")
   let query = useQuery();
   console.log(query.get("id"));
   const [book, setBook] = useState({});
@@ -28,8 +30,23 @@ function Preview() {
     );
     const data = await api.json();
     setBook(data.book);
-    console.log(book);
+    console.log(book._id);
   }
+  
+  const addBook = async (e)=>{
+    Cookies.get("token")
+    const api =await fetch(`http://localhost:4001/newList/${e.target.value}`, {
+      method: "POST", 
+
+      headers:{
+        "Content-Type":"application/json",
+        Authorization : "Bearer " + Cookies.get("token")
+      }
+    })
+    const data = await api.json()
+    console.log(data)
+  }
+
   useEffect(() => {
     getBook();
   }, []);
@@ -62,6 +79,9 @@ function Preview() {
             </div>
             <div>
               <p>Rating</p>
+            </div>
+            <div>
+              <button onClick={addBook} value={book._id}>add to read List</button>
             </div>
           </div>
         </div>

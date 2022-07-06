@@ -1,8 +1,18 @@
 import Navbar from "../home/navbar";
 import LibraryNav from "./LibraryNav";
 import "./lib.css";
+import {useLocation} from "react-router-dom";
+import { useMemo } from "react";
 
 function All() {
+  const useQuery = () => {
+    const { search } = useLocation();
+    return useMemo(() => new URLSearchParams(search), [search]);
+  };
+  let query = useQuery();
+  let id = query.get("id")
+  console.log(id)
+
   return (
     <div>
       <div>

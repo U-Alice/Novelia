@@ -2,16 +2,19 @@ import Cookies from "js-cookie";
 import { useContext } from "react";
 import { booksContext } from "../booksContext";
 import {useNavigate} from "react-router-dom";
+import { useEffect } from "react";
 
 function DisplayBooks() {
   
 const {trendingBooks , romance, horror, scienceBooks, retrieveBooks} = useContext(booksContext);
 const Navigate = useNavigate("")
-retrieveBooks();
 const handlePreview = (e)=>{
-    console.log(e.target.value)
-    Navigate(`/preview/?id=${e.target.value}`)
+  console.log(e.target.value)
+  Navigate(`/preview/?id=${e.target.value}`)
 }
+useEffect(()=>{
+  retrieveBooks()
+}, [])
   return (
     <div>
       <div className="heading">
