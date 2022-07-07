@@ -9,7 +9,6 @@ import { useState } from "react";
 
 function All() {
   const [list, setList] = useState([]);
-  const [books, setBooks] = useState([]);
 
   const useQuery = () => {
     const { search } = useLocation();

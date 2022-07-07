@@ -12,6 +12,7 @@ import Preview from "./components/preview/preview";
 import { UserProvider } from "./components/userContext";
 import UploadImage from "./components/signup/uploadImage";
 import { BooksProvider } from "./components/booksContext";
+import Chat from "./components/chat/chat";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Route path="/list" element={<List />} />
               <Route path="/publish" element={<Publish />} />
               <Route path="/preview" element={<Preview />} />
+              <Route path="/chat" element={<Chat />} />
               <Route path="/upload" element={<UploadImage />} />
             </Routes>
           </BooksProvider>
