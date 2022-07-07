@@ -2,14 +2,18 @@ import { useState } from "react";
 
 function ChatItem({ socket, room, username }) {
   const [currentMessage, setCurrentMessage] = useState();
-  const sendMessage = () => {
+  const sendMessage = async() => {
     if (currentMessage !== "") {
       const messageData = {
         room: room,
-        author : username, 
-        message : currentMessage, 
-        time : new Date(Date.now()).getHours() + ":" + new Date(Date.now())
-      }
+        author: username,
+        message: currentMessage,
+        time:
+          new Date(Date.now()).getHours()
+        
+      };
+      console.log(messageData)
+      await socket.emit("send_message", messageData)
     }
   };
   return (
@@ -23,7 +27,7 @@ function ChatItem({ socket, room, username }) {
           type="text"
           placeholder="Hey.."
           onChange={(e) => {
-            setCurrentMesaage(e.target.value);
+            setCurrentMessage(e.target.value);
           }}
         />
         <button onClick={sendMessage}>&#9658;</button>
