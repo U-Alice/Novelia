@@ -1,12 +1,13 @@
 import { useState } from "react";
 import io from "socket.io-client";
+import ChatItem from "./chatItem";
 function Chat() {
   const socket = io.connect("http://localhost:4002");
   const [user, setUser] = useState("");
   const [room, setRoom] = useState("");
   const joinRoom = () => {
-    if(username !== "" && room !== ""){
-
+    if (user !== "" && room !== "") {
+      socket.emit("join_room", room);
     }
   };
   return (
@@ -29,6 +30,7 @@ function Chat() {
         }}
       />
       <button onClick={joinRoom}>Join A Room</button>
+      <ChatItem  socket={socket} username={user} room ={room}/>
     </div>
   );
 }
