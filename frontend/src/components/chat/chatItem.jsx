@@ -1,23 +1,27 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import "./chat.css";
 
 function ChatItem({ socket, room, username }) {
   const [currentMessage, setCurrentMessage] = useState();
-  const sendMessage = async() => {
+  const sendMessage = async () => {
     if (currentMessage !== "") {
       const messageData = {
         room: room,
         author: username,
         message: currentMessage,
-        time:
-          new Date(Date.now()).getHours()
-        
+        time: new Date(Date.now()).getHours(),
       };
-      console.log(messageData)
-      await socket.emit("send_message", messageData)
+      await socket.emit("send_message", messageData);
     }
   };
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+    console.log(data)      
+    });
+  }, [socket]);
   return (
-    <div>
+    <div className="chat-window">
       <div className="chat-header">
         <p>live Chat</p>
       </div>
