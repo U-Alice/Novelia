@@ -1,6 +1,11 @@
 import SignUp from "./components/signup/signup";
 import SignIn from "./components/signin/signin";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import Home from "./components/landingPage/home";
 import Welcome from "./components/home/homepage";
 import All from "./components/Library/all";
@@ -13,8 +18,10 @@ import { UserProvider } from "./components/userContext";
 import UploadImage from "./components/signup/uploadImage";
 import { BooksProvider } from "./components/booksContext";
 import Chat from "./components/chat/chat";
+import Cookies from "js-cookie";
 
 function App() {
+  const user = Cookies.get("token");
   return (
     <div className="App">
       <Router>
@@ -31,7 +38,10 @@ function App() {
               <Route path="/list" element={<List />} />
               <Route path="/publish" element={<Publish />} />
               <Route path="/preview" element={<Preview />} />
-              <Route path="/chat" element={<Chat />} />
+              <Route
+                path="/chat"
+                element={!user ? <Navigate to="/signin" /> : <Chat />}
+              ></Route>
               <Route path="/upload" element={<UploadImage />} />
             </Routes>
           </BooksProvider>

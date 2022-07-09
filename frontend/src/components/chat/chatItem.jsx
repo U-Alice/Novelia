@@ -49,7 +49,7 @@ function ChatItem({ socket, room, username }) {
       <div className="chat-footer">
         <input
           type="text"
-          placeholder="Hey.."
+          placeholder="Type your message...."
           onChange={(e) => {
             setCurrentMessage(e.target.value);
           }}
