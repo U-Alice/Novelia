@@ -4,6 +4,7 @@ import ChatItem from "./chatItem";
 import  {React} from "react";
 import "./chat.css";
 import Conversations from "./conversations";
+import Message from "./message";
 function Chat() {
   const socket = io.connect("http://localhost:4002");
   const [user, setUser] = useState("");
@@ -33,7 +34,30 @@ function Chat() {
           </div>
          </div>
          <div className="chatBox">
-          <div className="chatBoxWrapper">box</div>
+          <div className="chatBoxWrapper">
+            <div className="chatBoxTop">
+
+              <Message/>
+              <Message own={true}/>
+              <Message/>
+              <Message own={true}/>
+              <Message own={true}/>
+              <Message/>
+              <Message own={true}/>
+              <Message own={true}/>
+              <Message/>
+              <Message/>
+              <Message/>
+              <Message own={true}/>
+              <Message/>
+              <Message/>
+
+            </div>
+            <div className="chatBoxBottom">
+              <input type="text" placeholder="Type your text...." />
+              <span ><button>&#9658;</button></span>
+            </div>
+          </div>
          </div>
          <div className="chatOnline">
           <div className="onlineWra">online</div>
