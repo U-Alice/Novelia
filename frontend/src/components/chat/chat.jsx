@@ -10,11 +10,12 @@ function Chat() {
   const joinRoom = () => {
     if (user !== "" && room !== "") {
       socket.emit("join_room", room);
+      setShowChat(true)
     }
   };
   return (
     <div>
-      {!showChat ? (
+      {!showChat ? ( 
         <div className="joinChatContainer">
           <h1>Join A chat</h1>
           Name{" "}
@@ -35,9 +36,9 @@ function Chat() {
           />
           <button onClick={joinRoom}>Join A Room</button>
         </div>
-      ) : (
+       ) : ( 
         <ChatItem socket={socket} username={user} room={room} />
-      )}
+       )} 
     </div>
   );
 }
