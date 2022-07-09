@@ -5,6 +5,7 @@ import  {React} from "react";
 import "./chat.css";
 import Conversations from "./conversations";
 import Message from "./message";
+import ChatOnline from "./chatOnline";
 function Chat() {
   const socket = io.connect("http://localhost:4002");
   const [user, setUser] = useState("");
@@ -60,7 +61,12 @@ function Chat() {
           </div>
          </div>
          <div className="chatOnline">
-          <div className="onlineWra">online</div>
+          <div className="onlineWra">
+            <ChatOnline/>
+            <ChatOnline/>
+            <ChatOnline/>
+
+          </div>
          </div>
       </div>
       {/* <div>

@@ -3,7 +3,7 @@
   margin: 0;
 }
 .messenger {
-  height: calc(100vh - 70px);
+  height: calc(100vh - 0px);
   display: flex;
   background-color: #faf8f6;
 }

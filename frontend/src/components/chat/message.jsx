@@ -16,8 +16,8 @@ export default function Message({ own }) {
             perspiciatis magnam accusamus nisi consequuntur ipsum veniam? Amet
             vel voluptate laboriosam
           </p>
+        <p className="messageBottom">1hour ago</p>
         </div>
-        <div className="messageBottom">1hour ago</div>
     </div>
   );
 }
