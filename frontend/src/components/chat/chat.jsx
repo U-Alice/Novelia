@@ -36,7 +36,6 @@ function Chat() {
         });
         const data = await res.json();
         setConversations(data);
-        console.log(data);
       } catch (err) {
         console.log(err);
       }
@@ -46,12 +45,18 @@ function Chat() {
   }, [token]);
   useEffect(() => {
     const getMessages = async () => {
-      const api = await fetch(`/getMessages/${currentConversation._id}`, {});
+      const api = await fetch(`http://localhost:4001/messages/${currentConversation._id}`, {
+        method: "GET",
+        headers:{
+          Authorization: "Bearer "+ token
+        }
+      });
       const data = await api.json();
       setMessages(data)
     };
     getMessages()
-  }, []);
+  }, [currentConversation]);
+  console.log(messages)
   return (
     <div>
       <div className="messenger">
