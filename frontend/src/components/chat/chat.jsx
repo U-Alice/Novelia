@@ -21,25 +21,28 @@ function Chat() {
   //   }
   // };
   const [conversations, setConversations] = useState([]);
-  const token = Cookies.get("token")
+  const [messages, setMessages] = useState([]);
+  const [currentConversation, setCurrentConv] = useState(null);
+
+  const token = Cookies.get("token");
   useEffect(() => {
     const getConversations = async () => {
-      try{
-      const res = await fetch(`http://localhost:4001/conversations`, {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
-      const data = await res.json()
-      setConversations(data)
-      console.log(data)
-    }catch(err){
-      console.log(err)
-    }
+      try {
+        const res = await fetch(`http://localhost:4001/conversations`, {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        const data = await res.json();
+        setConversations(data);
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
     };
 
-    getConversations()
+    getConversations();
   }, [token]);
   return (
     <div>
@@ -51,38 +54,46 @@ function Chat() {
               placeholder="Search for friends"
               className="chatMenuInput"
             />
-      {conversations.map((c)=>{
-        return (
-          <Conversations conversation = {c}/>
-        )
-      })}
+            {conversations.map((c) => {
+              return (
+                <div onClick={}>
+                  <Conversations conversation={c} />
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="chatBox">
-          <div className="chatBoxWrapper">
-            <div className="chatBoxTop">
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message own={true} />
-              <Message />
-              <Message />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message />
+          {currentConversation !== null ? (
+            <div className="chatBoxWrapper">
+              <div className="chatBoxTop">
+                <Message />
+                <Message own={true} />
+                <Message />
+                <Message own={true} />
+                <Message own={true} />
+                <Message />
+                <Message own={true} />
+                <Message own={true} />
+                <Message />
+                <Message />
+                <Message />
+                <Message own={true} />
+                <Message />
+                <Message />
+              </div>
+              <div className="chatBoxBottom">
+                <input type="text" placeholder="Type your text...." />
+                <span>
+                  <button>&#9658;</button>
+                </span>
+              </div>
             </div>
-            <div className="chatBoxBottom">
-              <input type="text" placeholder="Type your text...." />
-              <span>
-                <button>&#9658;</button>
-              </span>
+          ) : (
+            <div className="noConversation">
+              Open a new Chat to start a conversation
             </div>
-          </div>
+          )}
         </div>
         <div className="chatOnline">
           <div className="onlineWra">
