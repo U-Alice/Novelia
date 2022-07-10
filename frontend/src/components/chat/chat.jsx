@@ -10,16 +10,16 @@ import { useEffect } from "react";
 import { userContext } from "../userContext";
 import Cookies from "js-cookie";
 function Chat() {
-  const socket = io.connect("http://localhost:4002");
-  const [user, setUser] = useState("");
-  const [room, setRoom] = useState("");
-  const [showChat, setShowChat] = useState(false);
-  const joinRoom = () => {
-    if (user !== "" && room !== "") {
-      socket.emit("join_room", room);
-      setShowChat(true);
-    }
-  };
+  // const socket = io.connect("http://localhost:4002");
+  // const [user, setUser] = useState("");
+  // const [room, setRoom] = useState("");
+  // const [showChat, setShowChat] = useState(false);
+  // const joinRoom = () => {
+  //   if (user !== "" && room !== "") {
+  //     socket.emit("join_room", room);
+  //     setShowChat(true);
+  //   }
+  // };
   const [conversations, setConversations] = useState([]);
   const token = Cookies.get("token")
   useEffect(() => {
@@ -51,9 +51,9 @@ function Chat() {
               placeholder="Search for friends"
               className="chatMenuInput"
             />
-      {conversations.map(()=>{
+      {conversations.map((c)=>{
         return (
-          <Conversations/>
+          <Conversations conversation = {c}/>
         )
       })}
           </div>

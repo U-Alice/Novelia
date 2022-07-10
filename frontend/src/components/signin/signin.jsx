@@ -26,6 +26,7 @@ function SignIn() {
 
     handleCookie("userName", userDetails.data.userName);
     handleCookie("token", userDetails.data.token);
+    handleCookie("currentUser", userDetails.data._id)
     localStorage.setItem("profile", userDetails.profile.image)
     handleCookie("profile", "image")
    
