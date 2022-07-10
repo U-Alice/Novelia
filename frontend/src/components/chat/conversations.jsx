@@ -20,7 +20,6 @@ export default function Conversations({conversation}) {
         }
       })
       const data = await api.json()
-      console.log(data)
       setFriend(data.user)
       setProfile(data.profile)
     }

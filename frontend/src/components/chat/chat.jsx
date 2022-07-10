@@ -23,7 +23,7 @@ function Chat() {
   const [conversations, setConversations] = useState([]);
   const [messages, setMessages] = useState([]);
   const [currentConversation, setCurrentConv] = useState(null);
-
+  const currentUser = Cookies.get("currentUser")
   const token = Cookies.get("token");
   useEffect(() => {
     const getConversations = async () => {
@@ -45,18 +45,20 @@ function Chat() {
   }, [token]);
   useEffect(() => {
     const getMessages = async () => {
-      const api = await fetch(`http://localhost:4001/messages/${currentConversation._id}`, {
-        method: "GET",
-        headers:{
-          Authorization: "Bearer "+ token
+      const api = await fetch(
+        `http://localhost:4001/messages/${currentConversation._id}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
         }
-      });
+      );
       const data = await api.json();
-      setMessages(data)
+      setMessages(data);
     };
-    getMessages()
+    getMessages();
   }, [currentConversation]);
-  console.log(messages)
   return (
     <div>
       <div className="messenger">
@@ -84,20 +86,9 @@ function Chat() {
           {currentConversation !== null ? (
             <div className="chatBoxWrapper">
               <div className="chatBoxTop">
-                <Message />
-                <Message own={true} />
-                <Message />
-                <Message own={true} />
-                <Message own={true} />
-                <Message />
-                <Message own={true} />
-                <Message own={true} />
-                <Message />
-                <Message />
-                <Message />
-                <Message own={true} />
-                <Message />
-                <Message />
+                {messages.map((m) => {
+                  return (<Message message ={m} own = {m.sender === currentUser}/>)
+                })}
               </div>
               <div className="chatBoxBottom">
                 <input type="text" placeholder="Type your text...." />
