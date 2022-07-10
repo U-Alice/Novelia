@@ -44,6 +44,14 @@ function Chat() {
 
     getConversations();
   }, [token]);
+  useEffect(() => {
+    const getMessages = async () => {
+      const api = await fetch(`/getMessages/${currentConversation._id}`, {});
+      const data = await api.json();
+      setMessages(data)
+    };
+    getMessages()
+  }, []);
   return (
     <div>
       <div className="messenger">
@@ -56,7 +64,11 @@ function Chat() {
             />
             {conversations.map((c) => {
               return (
-                <div onClick={}>
+                <div
+                  onClick={() => {
+                    setCurrentConv(c);
+                  }}
+                >
                   <Conversations conversation={c} />
                 </div>
               );
