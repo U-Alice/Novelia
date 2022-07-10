@@ -16,7 +16,6 @@ export const UserProvider = ({ children }) => {
     });
     const data = await api.json();
     setDetails(data);
-    // setCookie ("name", data.)
   }
 
 

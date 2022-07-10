@@ -16,7 +16,6 @@ function SignIn() {
   const { getUser, userDetails, getProfile, profile } = useContext(userContext);
 
   function handleCookie(cookieName, cookieValue) {
-    let expires = new Date();
     Cookies.set(cookieName, cookieValue, { expires: 360, path: "" });
   }
   const handleSubmit = async (e) => {
