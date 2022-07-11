@@ -26,8 +26,14 @@ function Chat() {
   const [currentConversation, setCurrentConv] = useState(null);
   const currentUser = Cookies.get("currentUser");
   const [newMessage, setNewMessage] = useState("");
+  const socket = useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
-
+  useEffect(() => {
+    socket.current.emit("addUser", currentUser)
+    socket.current.on("getUsers", users => {
+      console.log(users);
+    })
+  }, [currentUser]);
   const token = Cookies.get("token");
   useEffect(() => {
     const getConversations = async () => {
@@ -70,25 +76,25 @@ function Chat() {
       text: newMessage,
       conversationId: currentConversation._id,
     };
-    try{
-    const api = await fetch("http://localhost:4001/newMessage", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(message),
-    });
-    const data = await api.json()
-    setMessages([...messages, data])
-    setNewMessage("")
-  }catch(err){
-    console.log(err)
-  }
+    try {
+      const api = await fetch("http://localhost:4001/newMessage", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      });
+      const data = await api.json();
+      setMessages([...messages, data]);
+      setNewMessage("");
+    } catch (err) {
+      console.log(err);
+    }
   };
-  useEffect(()=>{
-  scrollRef.current?.scrollIntoView({behaviour: "scroll"})
-  }, [messages])
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behaviour: "scroll" });
+  }, [messages]);
   return (
     <div>
       <div className="messenger">
@@ -117,10 +123,11 @@ function Chat() {
             <div className="chatBoxWrapper">
               <div className="chatBoxTop">
                 {messages.map((m) => {
-                  return (<div ref={scrollRef}>
-                   <Message message={m} own={m.sender === currentUser} />
-                  </div>
-                  )
+                  return (
+                    <div ref={scrollRef}>
+                      <Message message={m} own={m.sender === currentUser} />
+                    </div>
+                  );
                 })}
               </div>
               <div className="chatBoxBottom">
