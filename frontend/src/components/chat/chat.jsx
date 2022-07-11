@@ -9,6 +9,7 @@ import ChatOnline from "./chatOnline";
 import { useEffect } from "react";
 import { userContext } from "../userContext";
 import Cookies from "js-cookie";
+import { useRef } from "react";
 function Chat() {
   // const socket = io.connect("http://localhost:4002");
   // const [user, setUser] = useState("");
@@ -23,7 +24,10 @@ function Chat() {
   const [conversations, setConversations] = useState([]);
   const [messages, setMessages] = useState([]);
   const [currentConversation, setCurrentConv] = useState(null);
-  const currentUser = Cookies.get("currentUser")
+  const currentUser = Cookies.get("currentUser");
+  const [newMessage, setNewMessage] = useState("");
+  const scrollRef = useRef();
+
   const token = Cookies.get("token");
   useEffect(() => {
     const getConversations = async () => {
@@ -59,6 +63,32 @@ function Chat() {
     };
     getMessages();
   }, [currentConversation]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const message = {
+      sender: currentUser,
+      text: newMessage,
+      conversationId: currentConversation._id,
+    };
+    try{
+    const api = await fetch("http://localhost:4001/newMessage", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(message),
+    });
+    const data = await api.json()
+    setMessages([...messages, data])
+    setNewMessage("")
+  }catch(err){
+    console.log(err)
+  }
+  };
+  useEffect(()=>{
+  scrollRef.current?.scrollIntoView({behavior: "scroll"})
+  }, [messages])
   return (
     <div>
       <div className="messenger">
@@ -87,13 +117,22 @@ function Chat() {
             <div className="chatBoxWrapper">
               <div className="chatBoxTop">
                 {messages.map((m) => {
-                  return (<Message message ={m} own = {m.sender === currentUser}/>)
+                  return (<div ref={scrollRef}>
+                   <Message message={m} own={m.sender === currentUser} />
+                  </div>
+                  )
                 })}
               </div>
               <div className="chatBoxBottom">
-                <input type="text" placeholder="Type your text...." />
+                <input
+                  type="text"
+                  placeholder="Type your text...."
+                  onChange={(e) => {
+                    setNewMessage(e.target.value);
+                  }}
+                />
                 <span>
-                  <button>&#9658;</button>
+                  <button onClick={handleSubmit}>&#9658;</button>
                 </span>
               </div>
             </div>
