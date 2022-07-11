@@ -26,11 +26,15 @@ function Chat() {
   const [currentConversation, setCurrentConv] = useState(null);
   const currentUser = Cookies.get("currentUser");
   const [newMessage, setNewMessage] = useState("");
+  const [arrivalMessage, setArrivalMessage]= useState(null)
   const socket = useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
 
   useEffect(()=>{
    socket.current =  io("ws:loclhost:8900");
+   socket.current.on("getMessage", (data)=>{
+  
+  })
   }, [])
   useEffect(() => {
     socket.current.emit("addUser", currentUser)
@@ -80,6 +84,12 @@ function Chat() {
       text: newMessage,
       conversationId: currentConversation._id,
     };
+    const receiverId = currentConversation.members.find( member => member != currentUser)
+    socket.current.emit("sendMessage", {
+      senderId: currentUser,
+      receiverId : receiverId, 
+      text: newMessage
+    })
     try {
       const api = await fetch("http://localhost:4001/newMessage", {
         method: "POST",
@@ -96,6 +106,8 @@ function Chat() {
       console.log(err);
     }
   };
+
+
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behaviour: "scroll" });
   }, [messages]);
