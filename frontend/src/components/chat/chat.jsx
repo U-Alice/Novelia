@@ -87,7 +87,7 @@ function Chat() {
   }
   };
   useEffect(()=>{
-  scrollRef.current?.scrollIntoView({behavior: "scroll"})
+  scrollRef.current?.scrollIntoView({behaviour: "scroll"})
   }, [messages])
   return (
     <div>
