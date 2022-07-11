@@ -5,22 +5,12 @@ import "./chat.css";
 import Conversations from "./conversations";
 import Message from "./message";
 import ChatOnline from "./chatOnline";
-// import { Cookie } from "js-cookie";
 import { useEffect } from "react";
 import { userContext } from "../userContext";
 import Cookies from "js-cookie";
 import { useRef } from "react";
 function Chat() {
-  // const socket = io.connect("http://localhost:4002");
-  // const [user, setUser] = useState("");
-  // const [room, setRoom] = useState("");
-  // const [showChat, setShowChat] = useState(false);
-  // const joinRoom = () => {
-  //   if (user !== "" && room !== "") {
-  //     socket.emit("join_room", room);
-  //     setShowChat(true);
-  //   }
-  // };
+
   const [conversations, setConversations] = useState([]);
   const [messages, setMessages] = useState([]);
   const [currentConversation, setCurrentConv] = useState(null);
@@ -29,11 +19,18 @@ function Chat() {
   const [arrivalMessage, setArrivalMessage]= useState(null)
   const socket = useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
-
+  useEffect(()=>{
+   arrivalMessage && currentConversation?.members.includes(arrivalMessage.sender) 
+   setMessages((prev)=>[...prev, arrivalMessage])
+  }, [arrivalMessage, currentConversation])
   useEffect(()=>{
    socket.current =  io("ws:loclhost:8900");
    socket.current.on("getMessage", (data)=>{
-  
+   setArrivalMessage({
+    sender: data.senderId ,
+    text:data.text,
+    createdAt: Date.now()
+   })
   })
   }, [])
   useEffect(() => {
