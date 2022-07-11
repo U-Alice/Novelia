@@ -28,6 +28,10 @@ function Chat() {
   const [newMessage, setNewMessage] = useState("");
   const socket = useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
+
+  useEffect(()=>{
+   socket.current =  io("ws:loclhost:8900");
+  }, [])
   useEffect(() => {
     socket.current.emit("addUser", currentUser)
     socket.current.on("getUsers", users => {
