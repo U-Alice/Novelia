@@ -2,7 +2,6 @@ import "./message.css";
 
 
 export default function Message({ own, message }) {
-  console.log(message)
   return (
     <div>
       <div className={own ? "message own" : "message"}>

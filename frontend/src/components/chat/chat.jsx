@@ -17,14 +17,14 @@ function Chat() {
   const currentUser = Cookies.get("currentUser");
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage]= useState(null)
-  const socket = useRef(io("ws://localhost:8900"));
+  const socket= useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
   useEffect(()=>{
    arrivalMessage && currentConversation?.members.includes(arrivalMessage.sender) 
-   setMessages((prev)=>[...prev, arrivalMessage])
+  //  setMessages((prev)=>[...prev, arrivalMessage])
   }, [arrivalMessage, currentConversation])
   useEffect(()=>{
-   socket.current =  io("ws:loclhost:8900");
+   socket.current =  io("ws://localhost:8900");
    socket.current.on("getMessage", (data)=>{
    setArrivalMessage({
     sender: data.senderId ,
@@ -87,6 +87,7 @@ function Chat() {
       receiverId : receiverId, 
       text: newMessage
     })
+  
     try {
       const api = await fetch("http://localhost:4001/newMessage", {
         method: "POST",
@@ -138,7 +139,7 @@ function Chat() {
                 {messages.map((m) => {
                   return (
                     <div ref={scrollRef}>
-                      <Message message={m} own={m.sender === currentUser} />
+                      <Message message={m} own={m.sender == currentUser} />
                     </div>
                   );
                 })}

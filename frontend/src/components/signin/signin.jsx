@@ -13,24 +13,47 @@ function SignIn() {
     password: "",
   });
   const [response, setResponse] = useState({});
-  const { getUser, userDetails, getProfile, profile } = useContext(userContext);
+  const { setDetails, setProfile, userDetails } = useContext(userContext);
 
   function handleCookie(cookieName, cookieValue) {
     Cookies.set(cookieName, cookieValue, { expires: 360, path: "" });
+  }
+  async function getProfile(){
+    const url = "http://localhost:4001/getProfile";
+    const api = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }
+    })
+    const data = await api.json()
+    setProfile(data);
+  }
+  async function getUser(username, password) {
+    const api = await fetch("http://localhost:4001/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: username,
+        password: password,
+      }),
+    });
+    const data = await api.json();
+    setDetails(data);
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
     await getUser(data.email, data.password);
     await getProfile();
-    console.log(userDetails);
 
-    handleCookie("userName", userDetails.data.userName);
-    handleCookie("token", userDetails.data.token);
-    handleCookie("currentUser", userDetails.data._id)
-    localStorage.setItem("profile", userDetails.profile.image)
-    handleCookie("profile", "image")
-   
-
+    // handleCookie("userName", userDetails.data.userName);
+    // handleCookie("token", userDetails.data.token);
+    // handleCookie("currentUser", userDetails.data._id)
+    // localStorage.setItem("profile", userDetails.profile.image)
+    // handleCookie("profile", "image")
+    console.log(userDetails)
 
     if (userDetails.success === true) {
       Navigate("/welcome");
