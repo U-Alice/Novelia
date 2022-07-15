@@ -139,7 +139,7 @@ function SignUp() {
               continue with google
             </button>
             <p className="message">{success}</p>
-            <p>
+            <p className="tip">
               Already have have an account?
               <Link to="/signin">
                 <span id="redirect">Sign In</span>

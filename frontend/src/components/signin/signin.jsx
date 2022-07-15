@@ -18,15 +18,15 @@ function SignIn() {
   function handleCookie(cookieName, cookieValue) {
     Cookies.set(cookieName, cookieValue, { expires: 360, path: "" });
   }
-  async function getProfile(){
+  async function getProfile() {
     const url = "http://localhost:4001/getProfile";
     const api = await fetch(url, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
-      }
-    })
-    const data = await api.json()
+      },
+    });
+    const data = await api.json();
     setProfile(data);
   }
   async function getUser(username, password) {
@@ -47,14 +47,11 @@ function SignIn() {
     e.preventDefault();
     await getUser(data.email, data.password);
     await getProfile();
-
-    // handleCookie("userName", userDetails.data.userName);
-    // handleCookie("token", userDetails.data.token);
-    // handleCookie("currentUser", userDetails.data._id)
-    // localStorage.setItem("profile", userDetails.profile.image)
-    // handleCookie("profile", "image")
-    console.log(userDetails)
-
+    handleCookie("userName", userDetails.data.userName);
+    handleCookie("token", userDetails.data.token);
+    handleCookie("currentUser", userDetails.data._id);
+    localStorage.setItem("profile", userDetails.profile.image);
+    handleCookie("profile", userDetails.profile.image);
     if (userDetails.success === true) {
       Navigate("/welcome");
     }
@@ -74,7 +71,7 @@ function SignIn() {
         <form action="" onSubmit={handleSubmit}>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="&#xF002; Search"
             name="email"
             onChange={handleChange}
             value={data.email}
@@ -86,12 +83,14 @@ function SignIn() {
             onChange={handleChange}
             value={data.password}
           />
+          {/* <span><i class='fa-solid fa-user'></i></span> */}
+          <p className="tip">Forgot password?<span id="redirect">Reset Password</span></p>
           <p>{response.message}</p>
           <button type="submit" id="submit">
             Sign In
           </button>
           <Button />
-          <p>
+          <p className="tip">
             Don't have have an account?
             <Link to="/signup">
               <span id="redirect">Sign up</span>

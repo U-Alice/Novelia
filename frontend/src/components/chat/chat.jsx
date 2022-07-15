@@ -10,34 +10,32 @@ import { userContext } from "../userContext";
 import Cookies from "js-cookie";
 import { useRef } from "react";
 function Chat() {
-
   const [conversations, setConversations] = useState([]);
   const [messages, setMessages] = useState([]);
   const [currentConversation, setCurrentConv] = useState(null);
   const currentUser = Cookies.get("currentUser");
   const [newMessage, setNewMessage] = useState("");
-  const [arrivalMessage, setArrivalMessage]= useState(null)
-  const socket= useRef(io("ws://localhost:8900"));
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const socket = useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
-  useEffect(()=>{
-   arrivalMessage && currentConversation?.members.includes(arrivalMessage.sender) 
-  //  setMessages((prev)=>[...prev, arrivalMessage])
-  }, [arrivalMessage, currentConversation])
-  useEffect(()=>{
-   socket.current =  io("ws://localhost:8900");
-   socket.current.on("getMessage", (data)=>{
-   setArrivalMessage({
-    sender: data.senderId ,
-    text:data.text,
-    createdAt: Date.now()
-   })
-  })
-  }, [])
   useEffect(() => {
-    socket.current.emit("addUser", currentUser)
-    socket.current.on("getUsers", users => {
-      console.log(users);
-    })
+    arrivalMessage &&
+      currentConversation?.members.includes(arrivalMessage.sender);
+    setMessages([...messages, arrivalMessage]);
+  }, [arrivalMessage, currentConversation]);
+  useEffect(() => {
+    socket.current = io("ws://localhost:8900");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+  useEffect(() => {
+    socket.current.emit("addUser", currentUser);
+    socket.current.on("getUsers", (users) => {});
   }, [currentUser]);
   const token = Cookies.get("token");
   useEffect(() => {
@@ -71,6 +69,7 @@ function Chat() {
       );
       const data = await api.json();
       setMessages(data);
+      console.log(messages);
     };
     getMessages();
   }, [currentConversation]);
@@ -81,13 +80,15 @@ function Chat() {
       text: newMessage,
       conversationId: currentConversation._id,
     };
-    const receiverId = currentConversation.members.find( member => member != currentUser)
+    const receiverId = currentConversation.members.find(
+      (member) => member != currentUser
+    );
     socket.current.emit("sendMessage", {
       senderId: currentUser,
-      receiverId : receiverId, 
-      text: newMessage
-    })
-  
+      receiverId: receiverId,
+      text: newMessage,
+    });
+
     try {
       const api = await fetch("http://localhost:4001/newMessage", {
         method: "POST",
@@ -104,7 +105,6 @@ function Chat() {
       console.log(err);
     }
   };
-
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behaviour: "scroll" });
@@ -137,9 +137,10 @@ function Chat() {
             <div className="chatBoxWrapper">
               <div className="chatBoxTop">
                 {messages.map((m) => {
+                  console.log(m)
                   return (
                     <div ref={scrollRef}>
-                      <Message message={m} own={m.sender == currentUser} />
+                      <Message message={m} own={m.sender === currentUser} />
                     </div>
                   );
                 })}

@@ -3,12 +3,8 @@ import { userContext } from "../userContext";
 import Cookies from "js-cookie";
 
 function Navbar() {
-  const [name, setName] = Cookies.get("userName")
-  const { profile, userDetails } = useContext(userContext);
-  useEffect(()=>{
-
-    console.log(userDetails)
-  }, [])
+  const name = Cookies.get("userName")
+  const profile = localStorage.getItem("profile")
   return (
     <div className="navbar">
       <div>
@@ -21,8 +17,8 @@ function Navbar() {
         <a href="">Adventure </a>
       </div>
       <div className="navImage">
-        <p className="name">{userDetails.data.userName}</p>
-        <img src={profile.profile.image} alt="profileImage" />
+        <p className="name">{name}</p>
+        <img src={profile} alt="profileImage" />
       </div>
     </div>
   );
