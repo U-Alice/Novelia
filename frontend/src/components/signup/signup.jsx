@@ -72,7 +72,7 @@ function SignUp() {
         setSuccess(data.message)
         setLoading(false)
         if(data.success === "success"){
-          Navigate("/welcome")
+          Navigate("/signin")
         }
       })
       .catch((error) => {

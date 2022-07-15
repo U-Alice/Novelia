@@ -8,8 +8,8 @@ function Books() {
         <div className="top3Books">
           <div className="topBooks">
             <div>
-              <p>Name</p>
-              <p>Author Name</p>
+              <p>The Lies I Tell</p>
+              <p>Julie Clark</p>
               <p>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
@@ -20,7 +20,7 @@ function Books() {
             </div>
             <div>
               <img
-                src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
+                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1636552042l/59412817.jpg"
                 alt=""
               />
             </div>
@@ -28,7 +28,7 @@ function Books() {
 
           <div className="topBooks">
             <div>
-              <p>Name</p>
+              <p>More Than You'll Than Ever Know</p>
               <p>Author Name</p>
               <p>
                 <i class="fa-solid fa-star"></i>
@@ -40,15 +40,15 @@ function Books() {
             </div>
             <div>
               <img
-                src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
+                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1655402447l/58984701._SY475_.jpg"
                 alt=""
               />
             </div>
           </div>
           <div className="topBooks">
             <div>
-              <p>Name</p>
-              <p>Author Name</p>
+              <p>In the dark We forget</p>
+              <p>Sandra Wong</p>
               <p>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
@@ -60,7 +60,7 @@ function Books() {
             </div>
             <div>
               <img
-                src="https://images-na.ssl-images-amazon.com/images/I/51UGKY9Wi4L._SX330_BO1,204,203,200_.jpg"
+                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1649655099l/58825582.jpg"
                 alt=""
               />
             </div>

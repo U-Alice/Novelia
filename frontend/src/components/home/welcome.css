@@ -100,11 +100,11 @@
 }
 .topBooks p:first-child{
   color: #612d08;
-  font-size: 20px;
+  font-size: 0.8em;
 }
 .topBooks p:nth-child(2){
   color: #612d08;
-  font-size: 18px;
+  font-size: 0.6em;
 }
 .fa-star{
   color: #D74D00;
@@ -120,6 +120,7 @@
 .top3Books {
   display: flex;
   margin-left: 2%;
+  margin-top: 4%;
 }
 
 .buy{

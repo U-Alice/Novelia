@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { userContext } from "../userContext";
 import { useState } from "react";
 function SignIn() {
+  const [isLoading, setLoading] = useState(false)
   const Navigate = useNavigate("");
   const [data, setData] = useState({
     email: "",
@@ -30,6 +31,7 @@ function SignIn() {
     setProfile(data);
   }
   async function getUser(username, password) {
+    setLoading(true)
     const api = await fetch("http://localhost:4001/login", {
       method: "POST",
       headers: {
@@ -53,6 +55,7 @@ function SignIn() {
     localStorage.setItem("profile", userDetails.profile.image);
     handleCookie("profile", userDetails.profile.image);
     if (userDetails.success === true) {
+      setLoading(false)
       Navigate("/welcome");
     }
   };
@@ -67,6 +70,7 @@ function SignIn() {
         {/* <p>{user.email}</p> */}
         <i class="fa-solid fa-user-plus"></i>
         <h3 id="signup">Login</h3>
+        {isLoading ? <LoadingSpinner/> :<h3 id="signup">SIGN UP</h3>}
 
         <form action="" onSubmit={handleSubmit}>
           <input

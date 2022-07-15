@@ -4,15 +4,15 @@ let id = 1 ;
 const testimonies =  [
     {
         id: id++, 
-        text: "dfkldkfldkfldskjflkdjfkdjfhlkdjfhkjdhflkdsjhfldskjfldkjfhkdsljfhlkdjfhlkjfhlksdjfkdjfkldsjfhkldsjhfkljdfhldkjfhlkdjfhlkdjfkdjfdjfldkjfdkjfhlkdjfhdhfieujdhfi",
+        text: "We really love the experience by novelia, couldn't imagine myself spending my time otherwise~Alice",
     }, 
     {
     id: id++, 
-    text: "Lorem2"
+    text: "Best book suggestions Ever and from all genres! Give it a try, you won't regret. ~Anonymous"
     }, 
     {
         id: id++, 
-        text: "Lorem3"
+        text: "This site is really what I have been waiting for since very long!Very sure you won't be disappointed ~Rita"
     }
 ]
 export default testimonies;
