@@ -28,8 +28,8 @@ function Books() {
 
           <div className="topBooks">
             <div>
-              <p>More Than You'll Than Ever Know</p>
-              <p>Author Name</p>
+              <p>More Than You'll..</p>
+              <p>Katie Gutierez</p>
               <p>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>

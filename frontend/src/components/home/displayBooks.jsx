@@ -16,9 +16,13 @@ useEffect(()=>{
   retrieveBooks()
 }, [])
   return (
-    <div>
+    <div className="books">
       <div className="heading">
         <h2>Trending Now</h2>
+      </div>
+      <div className="buttons">
+        <button className="btn-left">&#8594;</button>
+        <button className="btn-right">&#8592;</button>
       </div>
       <div className="list">
         {trendingBooks.map((item) => {
@@ -29,8 +33,8 @@ useEffect(()=>{
               </div>
               <div>
                 <p>{item.title}</p> 
-                <button onClick={handlePreview} value={item._id}>View Summary</button>
               </div>
+                <button onClick={handlePreview} value={item._id}>View Summary</button>
             </div>
           );
         })}
@@ -38,6 +42,10 @@ useEffect(()=>{
 
       <div className="heading">
         <h2>Science</h2>
+      </div>
+      <div className="buttons">
+        <button className="btn-left">&#8594;</button>
+        <button className="btn-right">&#8592;</button>
       </div>
       <div className="list">
         {scienceBooks.map((item) => {
@@ -58,6 +66,11 @@ useEffect(()=>{
       <div className="heading">
         <h3>Romance</h3>
       </div>
+
+      <div className="buttons">
+        <button className="btn-left">&#8594;</button>
+        <button className="btn-right">&#8592;</button>
+      </div>
       <div className="list">
         {romance.map((item) => {
           return (
@@ -75,6 +88,10 @@ useEffect(()=>{
       </div>
       <div className="heading">
         <h2>Horror</h2>
+      </div>
+      <div className="buttons">
+        <button className="btn-left">&#8594;</button>
+        <button className="btn-right">&#8592;</button>
       </div>
       <div className="list">
         {horror.map((item) => {
