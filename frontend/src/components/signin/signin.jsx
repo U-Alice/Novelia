@@ -44,20 +44,19 @@ function SignIn() {
     });
     const data = await api.json();
     setDetails(data);
+    setLoading(false)
+    Navigate("/welcome")
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
     await getUser(data.email, data.password);
+    console.log(userDetails)
     await getProfile();
     handleCookie("userName", userDetails.data.userName);
     handleCookie("token", userDetails.data.token);
     handleCookie("currentUser", userDetails.data._id);
     localStorage.setItem("profile", userDetails.profile.image);
     handleCookie("profile", userDetails.profile.image);
-    if (userDetails.success === true) {
-      setLoading(false)
-      Navigate("/welcome");
-    }
   };
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
