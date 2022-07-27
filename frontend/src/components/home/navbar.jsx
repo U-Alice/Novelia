@@ -11,7 +11,9 @@ function Navbar() {
         <a href="">Novelia</a>
       </div>
       <div>
-        <a href="">Trending </a>
+        <Link to="/list">
+        My List 
+        </Link>
         <a href="">Romance</a>
         <a href="">Contact</a>
         <a href="">Adventure </a>
