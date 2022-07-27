@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { userContext } from "../userContext";
 import Cookies from "js-cookie";
+import {Link} from "react-router-dom"
 
 function Navbar() {
   const name = Cookies.get("userName")
