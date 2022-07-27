@@ -36,7 +36,7 @@ function Preview() {
   const addBook = async (e)=>{
     Cookies.get("token")
     const api =await fetch(`https://novelia.herokuapp.com/getBook/${e.target.value}`, {
-      method: "POST", 
+      method: "Get", 
       headers:{
         "Content-Type":"application/json",
         Authorization : "Bearer " + Cookies.get("token")
