@@ -43,9 +43,11 @@ function SignIn() {
       }),
     });
     const data = await api.json();
-    setDetails(data);
+    await setDetails(data);
     setLoading(false)
-    // Navigate("/welcome")
+    if(setDetails){
+      Navigate("/welcome")
+    }
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
