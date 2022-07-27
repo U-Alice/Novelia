@@ -45,9 +45,9 @@ function SignIn() {
     const data = await api.json();
     await setDetails(data);
     setLoading(false)
-    if(setDetails){
-      Navigate("/welcome")
-    }
+    // if(setDetails){
+      // Navigate("/welcome")
+    // }
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +59,6 @@ function SignIn() {
     Cookies.set("currentUser", userDetails.data._id , { expires: new Date(Date.now() + 9999999), httpOnly: false });
     // console.log(userDetails.profile.image)
     // localStorage.setItem("profile", userDetails.profile.image);
-    Cookies.set("token", "token")
     // handleCookie("profile", userDetails.profile.image);
     // localStorage.setItem("token", "token")
   };
