@@ -59,7 +59,7 @@ function SignUp() {
     e.preventDefault()
     setLoading(true)
     setSuccess("")
-   await fetch("http://localhost:4001/register", {
+   await fetch("https://novelia.herokuapp.com/register", {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",

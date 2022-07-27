@@ -13,7 +13,7 @@ export default function Conversations({conversation}) {
     const friendId = conversation.members.find(m => m !== currentUser)
 
     const getUser = async ()=>{
-      const api = await fetch(`http://localhost:4001/getUser/${friendId}`, {
+      const api = await fetch(`https://novelia.herokuapp.com/getUser/${friendId}`, {
         method: "GET", 
         headers: {
           Authorization : "Bearer " + token

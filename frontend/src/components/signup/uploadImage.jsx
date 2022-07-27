@@ -24,7 +24,7 @@ function UploadImage() {
     formData.append("files", file);
     // formData.append("upload_preset", "Novelia");
     try {
-      fetch("http://localhost:4001/addProfile", {
+      fetch("https://novelia.herokuapp.com/addProfile", {
         method: "POST",
         body: JSON.stringify({data: imageUrl}),
         headers: {

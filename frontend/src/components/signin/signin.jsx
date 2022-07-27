@@ -20,25 +20,25 @@ function SignIn() {
     Cookies.set(cookieName, cookieValue, { expires: 360, path: "" });
   }
   async function getProfile() {
-    const url = "http://localhost:4001/getProfile";
+    const url = "https://novelia.herokuapp.com/getProfile";
     const api = await fetch(url, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${Cookies.get("token")}`,
       },
     });
     const data = await api.json();
     setProfile(data);
   }
-  async function getUser(username, password) {
+  async function getUser(email, password) {
     setLoading(true)
-    const api = await fetch("http://localhost:4001/login", {
+    const api =await fetch("https://novelia.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: username,
+        email: email,
         password: password,
       }),
     });
@@ -52,11 +52,14 @@ function SignIn() {
     await getUser(data.email, data.password);
     console.log(userDetails)
     await getProfile();
-    handleCookie("userName", userDetails.data.userName);
-    handleCookie("token", userDetails.data.token);
-    handleCookie("currentUser", userDetails.data._id);
+    Cookies.set("userName", userDetails.data.userName , { expires: 3600, path: "" });
+    Cookies.set("token", userDetails.data.token , { expires: 3600, path: "" });
+    Cookies.set("currentUser", userDetails.data._id , { expires: 3600, path: "" });
+    console.log(userDetails.profile.image)
     localStorage.setItem("profile", userDetails.profile.image);
-    handleCookie("profile", userDetails.profile.image);
+    // handleCookie("profile", userDetails.profile.image);
+
+    // localStorage.setItem("token", "token")
   };
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });

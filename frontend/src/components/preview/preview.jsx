@@ -20,7 +20,7 @@ function Preview() {
   async function getBook() {
     setBook({});
     const api = await fetch(
-      `http://localhost:4001/getBook/${query.get("id")}`,
+      `https://novelia.herokuapp.com/getBook/${query.get("id")}`,
       {
         method: "GET",
         headers: {

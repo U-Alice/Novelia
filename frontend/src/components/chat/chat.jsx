@@ -6,7 +6,6 @@ import Conversations from "./conversations";
 import Message from "./message";
 import ChatOnline from "./chatOnline";
 import { useEffect } from "react";
-import { userContext } from "../userContext";
 import Cookies from "js-cookie";
 import { useRef } from "react";
 function Chat() {
@@ -41,7 +40,7 @@ function Chat() {
   useEffect(() => {
     const getConversations = async () => {
       try {
-        const res = await fetch(`http://localhost:4001/conversations`, {
+        const res = await fetch(`https://novelia.herokuapp.com/conversations`, {
           method: "GET",
           headers: {
             Authorization: "Bearer " + token,
@@ -59,7 +58,7 @@ function Chat() {
   useEffect(() => {
     const getMessages = async () => {
       const api = await fetch(
-        `http://localhost:4001/messages/${currentConversation._id}`,
+        `https://novelia.herokuapp.com/messages/${currentConversation._id}`,
         {
           method: "GET",
           headers: {
@@ -90,7 +89,7 @@ function Chat() {
     });
 
     try {
-      const api = await fetch("http://localhost:4001/newMessage", {
+      const api = await fetch("https://novelia.herokuapp.com/newMessage", {
         method: "POST",
         headers: {
           Authorization: "Bearer " + token,

@@ -9,7 +9,7 @@ function List() {
   const [list, setList] = useState([]);
 
   const getList = async () => {
-    const api = await fetch("http://localhost:4001/getList", {
+    const api = await fetch("https://novelia.herokuapp.com/getList", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + Cookies.get("token"),
