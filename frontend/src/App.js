@@ -19,6 +19,7 @@ import UploadImage from "./components/signup/uploadImage";
 import { BooksProvider } from "./components/booksContext";
 import Chat from "./components/chat/chat";
 import Cookies from "js-cookie";
+import Profile from "./components/profile/myProfile";
 
 function App() {
   const user = Cookies.get("token");
@@ -38,6 +39,8 @@ function App() {
               <Route path="/list" element={<List />} />
               <Route path="/publish" element={<Publish />} />
               <Route path="/preview" element={<Preview />} />
+              <Route path="/myBooks" element={<Profile />} />
+
               <Route
                 path="/chat"
                 element={!user ? <Navigate to="/signin" /> : <Chat />}

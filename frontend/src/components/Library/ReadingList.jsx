@@ -6,7 +6,7 @@ import Footer from "../landingPage/footer";
 import LibraryNav from "./LibraryNav";
 
 function List() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState([] );
 
   const getList = async () => {
     const api = await fetch("https://novelia.herokuapp.com/getList", {
@@ -25,8 +25,7 @@ function List() {
   return (
     <div className="readList">
       <Navbar />
-      <LibraryNav />
-      <button id="create">Create a new reading List</button>
+      <button id="create">Your read List</button>
       <div className="readList">
         {list.map((item) => {
           return (

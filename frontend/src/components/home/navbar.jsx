@@ -11,17 +11,30 @@ function Navbar() {
       <div>
         <a href="">Novelia</a>
       </div>
-      <div>
+      <div class="navbar1">
         <Link to="/list">
-        My List 
+      My List
         </Link>
-        <a href="">Romance</a>
-        <a href="">Contact</a>
-        <a href="">Adventure </a>
+        <Link to="/welcome">Home</Link>
+
+        <Link to="/myBooks">My Books</Link>
+        <Link to="newReleases">New</Link>
+
+        <div class="dropdown">
+          <button class="dropbtn">Genre
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <Link to="/genre?genre=adventure">adventure</Link>
+            <Link to="/genre?genre=horror">horror</Link>
+            <Link to="/genre?genre=non-fiction">non-fiction</Link>
+            <Link to="/genre?genre=romance">Romance</Link>
+          </div>
+        </div>
       </div>
-      <div className="navImage">
-        <p className="name">{name}</p>
-        <img src={profile} alt="profileImage" />
+      <div>
+        <p className="name">{Cookies.get("userName")}</p>
+        <img src="" alt="" />
       </div>
     </div>
   );
