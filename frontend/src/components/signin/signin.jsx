@@ -52,13 +52,12 @@ function SignIn() {
     await getUser(data.email, data.password);
     console.log(userDetails)
     await getProfile();
-    Cookies.set("userName", userDetails.data.userName , { expires: 3600, path: "" });
-    Cookies.set("token", userDetails.data.token , { expires: 3600, path: "" });
-    Cookies.set("currentUser", userDetails.data._id , { expires: 3600, path: "" });
+    Cookies.set("userName", userDetails.data.userName , { expires: 3600, path: "", httpOnly: False });
+    Cookies.set("token", userDetails.data.token , { expires: 3600, path: "", httpOnly: False });
+    Cookies.set("currentUser", userDetails.data._id , { expires: 3600, path: "", httpOnly: False });
     console.log(userDetails.profile.image)
     localStorage.setItem("profile", userDetails.profile.image);
     // handleCookie("profile", userDetails.profile.image);
-
     // localStorage.setItem("token", "token")
   };
   const handleChange = ({ currentTarget: input }) => {
