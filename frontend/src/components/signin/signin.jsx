@@ -48,13 +48,13 @@ function SignIn() {
     Navigate("/welcome")
   }
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // await getUser(data.email, data.password);
-    // console.log(userDetails)
+    e.preventDefault();
+    await getUser(data.email, data.password);
+    console.log(userDetails)
     // await getProfile();
-    // Cookies.set("userName", userDetails.data.userName , { expires:new Date(Date.now() + 9999999), path: "", httpOnly: False });
-    // Cookies.set("token", userDetails.data.token , { expires: new Date(Date.now() + 9999999), path: "", httpOnly: False });
-    // Cookies.set("currentUser", userDetails.data._id , { expires: new Date(Date.now() + 9999999), path: "", httpOnly: False });
+    Cookies.set("userName", userDetails.data.userName , { expires:new Date(Date.now() + 9999999), path: "", httpOnly: False });
+    Cookies.set("token", userDetails.data.token , { expires: new Date(Date.now() + 9999999), path: "", httpOnly: False });
+    Cookies.set("currentUser", userDetails.data._id , { expires: new Date(Date.now() + 9999999), path: "", httpOnly: False });
     // console.log(userDetails.profile.image)
     // localStorage.setItem("profile", userDetails.profile.image);
     Cookies.set("token", "token")
