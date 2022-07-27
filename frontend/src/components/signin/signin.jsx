@@ -45,7 +45,7 @@ function SignIn() {
     const data = await api.json();
     setDetails(data);
     setLoading(false)
-    Navigate("/welcome")
+    // Navigate("/welcome")
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
