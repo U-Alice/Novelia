@@ -18,14 +18,22 @@
   color: #612d08;
   margin-left: 50px;
 }
+.navbar  i{
+font-size: 1.5em;
+color: #612d08;
+margin-left: 2em;
+transition: 1s;
+}
+.navbar i:hover{
+color:#a55f2e
+}
 .navbar div {
   display: flex;
   gap: 10%;
-  margin-left: 10%;
+  margin-left: 8%;
   margin-top: 1%;
 }
 .name {
-  color: #612d08;
   font-size: 1.2em;
   font-family: "arima Madurai";
   font-weight: bold;
@@ -36,7 +44,7 @@
   height: 100%;
 }
 .navImage img {
-  top: 5;
+  top: 35%;
   width: 18%;
   position: relative;
   height: 90%;
@@ -235,7 +243,9 @@
   color: white;
   font-weight: bold;
   display: flex;
-  background-repeat: 2;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center ;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -243,10 +253,18 @@
 }
 .subscribe input {
   margin-top: 2%;
-  width: 40%;
+  width: 30%;
+  height: 2.5em;
+  border: none;
   font-size: 1.1em;
   border-radius: 0px;
   display: inline;
+  padding-left: 2%;
+  transition: 2s;
+}
+.subscribe input:focus{
+width: 40%;
+outline: none;
 }
 .btn-right,
 .btn-left {

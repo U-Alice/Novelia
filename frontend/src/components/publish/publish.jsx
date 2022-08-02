@@ -1,7 +1,22 @@
+import { useState } from "react";
 import Navbar from "../home/navbar";
 import "./publish.css";
 
 function Publish() {
+  const [data, setData] = useState({
+    name:"",
+    author:"", 
+    
+  })
+
+
+  const handleSubmit = async ()=>{
+    const api = await fetch("http:localhost:4001/uploadBook", {
+      method:"POST", 
+      "content-Type":"application/json",
+      body: JSON.stringify(data)
+    })
+  }
   return (
     <div className="publish">
       <Navbar />
@@ -19,11 +34,11 @@ function Publish() {
           <label htmlFor="">Name Of The Author</label>
           <input type="text" />
           <select name="category" id="category">
-            <option value="">Romance</option>
-            <option value="">Action</option>
-            <option value="">Horro</option>
-            <option value="">Non-fictional</option>
-            <option value="">Fantasy</option>
+            <option value="Romance">Romance</option>
+            <option value="Action">Action</option>
+            <option value="Horror">Horror</option>
+            <option value="non-fictional">Non-fictional</option>
+            <option value="fantasy">Fantasy</option>
           </select>
           <label htmlFor="" className>
             Upload Book{" "}

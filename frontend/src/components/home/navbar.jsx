@@ -11,10 +11,10 @@ function Navbar() {
         <a href="">Novelia</a>
       </div>
       <div>
-        <a href="">Trending </a>
-        <a href="">Romance</a>
-        <a href="">Contact</a>
-        <a href="">Adventure </a>
+        <a href=""><i class="fa-solid fa-house-chimney-window"></i>  </a>
+        <a href="/publish"><i class="fa-solid fa-plus"></i></a>
+        <a href="/list"><i class="fa-solid fa-align-center"></i></a>
+        <a href="/chat"><i class="fa-regular fa-message"></i> </a>
       </div>
       <div className="navImage">
         <p className="name">{name}</p>

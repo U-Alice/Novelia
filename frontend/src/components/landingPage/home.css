@@ -199,6 +199,7 @@ nav{
     background-color: #612D08;
     width: 100%;
     color: white;
+    bottom: 0;
 }
 .footer a{
     color: white;

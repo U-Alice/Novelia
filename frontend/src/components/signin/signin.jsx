@@ -30,7 +30,7 @@ function SignIn() {
     const data = await api.json();
     setProfile(data);
   }
-  async function getUser(username, password) {
+  async function getUser(email, password) {
     setLoading(true)
     const api = await fetch("http://localhost:4001/login", {
       method: "POST",
@@ -38,7 +38,7 @@ function SignIn() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: username,
+        email: email,
         password: password,
       }),
     });

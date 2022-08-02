@@ -27,33 +27,34 @@ function List() {
       <Navbar />
       <LibraryNav />
       <button id="create">Create a new reading List</button>
-      <div className="readList">
-        {list.map((item) => {
-          return (
-            <div className="readItem">
-              <div className="readImage">
-                <img
-                  src={item.imgUrl}
-                  id="readImage"
-                  alt=""
-                />  
-              </div>
-              <div className="collectionName">
-                <p>{item.title}</p>
-                <p>{item.author}</p>
-              </div>
-        
-              <div>
-                {" "}
-                <p>
-                  <i class="fa-solid fa-ellipsis"></i>
-                </p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <Footer/>
+      {list ? (
+             <div className="readList">
+             {list.map((item) => {
+               return (
+                 <div className="readItem">
+                   <div className="readImage">
+                     <img src={item.imgUrl} id="readImage" alt="" />
+                   </div>
+                   <div className="collectionName">
+                     <p>{item.title}</p>
+                     <p>{item.author}</p>
+                   </div>
+   
+                   <div>
+                     {" "}
+                     <p>
+                       <i class="fa-solid fa-ellipsis"></i>
+                     </p>
+                   </div>
+                 </div>
+               );
+             })}
+           </div>
+        ) : (
+        <div className="readList"> <h1 className="waterMark">Read List not yet Created</h1></div>
+   
+      )}
+      <Footer />
     </div>
   );
 }

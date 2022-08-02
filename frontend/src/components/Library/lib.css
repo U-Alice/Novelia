@@ -144,3 +144,13 @@
   color: white;
   border: none;
 }
+.readList{
+  height:60vh;
+}
+.waterMark{
+  font-size: 4em;
+  color: rgba(0, 0, 0, 0.226);
+  margin-left: 25%;
+  margin-top: 10%;
+}
+
