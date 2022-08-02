@@ -17,7 +17,7 @@ function All() {
   let query = useQuery();
   let id = query.get("id");
   const getList = async () => {
-    const api = await fetch("http://localhost:4001/getList", {
+    const api = await fetch("https://novelia.herokuapp.com/getList", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + Cookies.get("token"),

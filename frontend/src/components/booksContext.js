@@ -10,7 +10,7 @@ const [romance, setRomance] = useState([]);
 const [horror, setHorror] = useState([]);
 const token = Cookies.get("token");
   async function retrieveBooks(){
-      await fetch("http://localhost:4001/topTen", {
+      await fetch("https://novelia.herokuapp.com/topTen", {
         method: "GET",
         headers: {
           "authorization": `Bearer ${token}`,
@@ -22,7 +22,7 @@ const token = Cookies.get("token");
         .then((data) => {
           setTrending(data.books);
         });
-          await fetch("http://localhost:4001/getByGenre?genre=science", {
+          await fetch("https://novelia.herokuapp.com/getByGenre?genre=science", {
         method: "GET",
         headers: {
           "authorization": `Bearer ${token}`,
@@ -34,7 +34,7 @@ const token = Cookies.get("token");
         .then((data) => {
           setScienceBooks(data.books);
         });
-      await fetch("http://localhost:4001/getByGenre?genre=romance", {
+      await fetch("https://novelia.herokuapp.com/getByGenre?genre=romance", {
         method: "GET",
         headers: {
           "authorization": `Bearer ${token}`,
@@ -46,7 +46,7 @@ const token = Cookies.get("token");
         .then((data) => { 
           setRomance(data.books);
         });
-      await fetch("http://localhost:4001/getByGenre?genre=horror", {
+      await fetch("https://novelia.herokuapp.com/getByGenre?genre=horror", {
         method: "GET",
         headers: {
           "authorization": `Bearer ${token}`,

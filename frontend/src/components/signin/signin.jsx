@@ -20,11 +20,11 @@ function SignIn() {
     Cookies.set(cookieName, cookieValue, { expires: 360, path: "" });
   }
   async function getProfile() {
-    const url = "http://localhost:4001/getProfile";
+    const url = "https://novelia.herokuapp.com/getProfile";
     const api = await fetch(url, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${Cookies.get("token")}`,
       },
     });
     const data = await api.json();
@@ -32,7 +32,7 @@ function SignIn() {
   }
   async function getUser(email, password) {
     setLoading(true)
-    const api = await fetch("http://localhost:4001/login", {
+    const api =await fetch("https://novelia.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,20 +43,22 @@ function SignIn() {
       }),
     });
     const data = await api.json();
-    setDetails(data);
+    await setDetails(data);
     setLoading(false)
-    Navigate("/welcome")
+      Navigate("/welcome")
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
     await getUser(data.email, data.password);
     console.log(userDetails)
-    await getProfile();
-    handleCookie("userName", userDetails.data.userName);
-    handleCookie("token", userDetails.data.token);
-    handleCookie("currentUser", userDetails.data._id);
-    localStorage.setItem("profile", userDetails.profile.image);
-    handleCookie("profile", userDetails.profile.image);
+    // await getProfile();
+    Cookies.set("userName", userDetails.data.userName , { expires:new Date(Date.now() + 9999999), httpOnly: false });
+    Cookies.set("token", userDetails.data.token , { expires: new Date(Date.now() + 9999999), httpOnly: false });
+    Cookies.set("currentUser", userDetails.data._id , { expires: new Date(Date.now() + 9999999), httpOnly: false });
+    // console.log(userDetails.profile.image)
+    // localStorage.setItem("profile", userDetails.profile.image);
+    // handleCookie("profile", userDetails.profile.image);
+    // localStorage.setItem("token", "token")
   };
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });

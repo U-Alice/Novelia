@@ -1,0 +1,74 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.mainImage img{
+    width: 100vw;
+    height: 30vh;
+    object-fit:fill;
+}
+.bio{
+    width: 20%;
+    margin-left: 5%;
+    margin-top:4%;
+}
+.bio p, .sideImage p, .profileDetails #number{
+font-style: normal;
+font-weight: 600;
+line-height: 24px;
+font-size: 0.8em;
+color: #A55D29;
+}
+.bio button{
+    margin-top:5%;
+    margin-left:2%;
+    width: 50%;
+    background-color: #612d08;
+    border: none;
+    color: white;
+    font-size: 1em;
+    font-weight: bolder;
+    height: 5vh;
+}
+.bio h3{
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+color: #612D08;
+}
+.sideImage img{
+    border-radius: 100%;
+    width: 80%;
+    object-fit: cover;
+    height: 25vh;
+}
+.myProfile{
+    width: 70%;
+    margin-top: -5%;
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.profileDetails #text{
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+color: #7D7D7D;
+}
+.profileDetails{
+    margin-top: 10%;
+    margin-left: 10%;
+}
+.profileContent{
+    display: flex;
+}
+.myBooks img{
+    width: 30%;
+    margin-left: 2%;
+    height: 30vh;
+}

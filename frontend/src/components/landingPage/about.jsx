@@ -3,20 +3,16 @@ function About() {
     <div class="about">
       <div className="about-side">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore saepe
-          sed provident obcaecati autem, doloribus eveniet. Veritatis
-          accusantium nihil illum, aliquam tempore adipisc  i ipsa. Alias quam
-          tempora ipsum facilis nisi.
-          <br />
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora rem
-          exercitationem libero totam nemo ex repellat voluptatum id eligendi
-          expedita ullam cumque hic, sapiente eos optio quisquam maxime?
-          Voluptate, ea!
-          <br />
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem
-          voluptate vitae, exercitationem dicta consectetur error dolor
-          inventore, magnam eos ad quae id nesciunt esse adipisci eius.
-          Obcaecati accusantium nemo assumenda?
+          For much of their history and all of prehistory, humans did not see
+          themselves as being any different from the other animals among which
+          they lived. Hunter-gatherers saw their prey as equals, if not
+          superiors, and animals were worshipped as divinities in many
+          traditional cultures. The humanist sense of a gulf between ourselves
+          and other animals is an aberration. Feeble as it is today, the feeling
+          of sharing a common destiny with other living things is embedded in
+          the human psyche. Those who struggle to conserve what is left of the
+          natural environment are moved by the love of living things, biophilia,
+          the frail bond of feeling that ties humankind to the Earth.
         </p>
       </div>
       <div className="about-picture">

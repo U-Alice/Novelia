@@ -22,7 +22,7 @@ function Home() {
          </div>
          <div className="text">
         <h3> WELCOME TO BOK, YOUR NUMBER ONE CHOICE FOR READING EXPERINCE</h3>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos placeat ipsum nam tempora est aliquam nisi hic repudiandae. Odio, illum temporibus? Exercitationem quidem eveniet, iure ipsam minus ea repellendus deleniti.</p>
+        <p>Your reading experience is our first concern, stay with us. New features under devlopment.</p>
         <Link to="/signup">
         <button>GET STARTED</button>
         </Link>

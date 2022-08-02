@@ -20,7 +20,7 @@ function Preview() {
   async function getBook() {
     setBook({});
     const api = await fetch(
-      `http://localhost:4001/getBook/${query.get("id")}`,
+      `https://novelia.herokuapp.com/getBook/${query.get("id")}`,
       {
         method: "GET",
         headers: {
@@ -35,9 +35,8 @@ function Preview() {
   
   const addBook = async (e)=>{
     Cookies.get("token")
-    const api =await fetch(`http://localhost:4001/newList/${e.target.value}`, {
+    const api =await fetch(`https://novelia.herokuapp.com/newList/${e.target.value}`, {
       method: "POST", 
-
       headers:{
         "Content-Type":"application/json",
         Authorization : "Bearer " + Cookies.get("token")

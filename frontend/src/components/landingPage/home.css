@@ -113,14 +113,15 @@ nav{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-right: 2%;
 
 }
 .about-side p{
     width: 75%;
     text-align: justify;
     color: #612D08;
-    font-weight: bold;
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 17px;
 }
 .about-picture{
     position: absolute; 
@@ -147,18 +148,26 @@ nav{
 .grid{
     display: flex;
     flex-direction: row;
-    gap: 24px;
+    gap: 2%;
     width: 100%;
 }
 .services div{
     display: flex;
     flex-direction: row;
-    margin-left: 10%;
+    margin-left: 2%;
+}
+.services div div{
+    flex-direction: column;
+}
+.services div div img{
+    width: 80%;
+}
+.services div p{
+    display: block;
 }
 .grid div {
     width: 15%;
     margin-left: 2%;
-
 }
 .grid div  div{
     width: 100%;
@@ -178,13 +187,17 @@ nav{
     margin-top:-10px;
     margin-left: 100%;
     padding-top: 8px;
-    color: white;
-    font-weight: bolder;
-    font-size: 18px;
+    color: #612D08;
+    font-size: 14px;
 }
-.available h1, .services h1{
+.available h1{
     text-align: center;
     padding-top: 2em;
+    color: #612D08;
+}
+.services h1{
+    text-align: center;
+    padding-top: 1em;
     color: #612D08;
 }
 .services{
