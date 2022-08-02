@@ -51,14 +51,10 @@ function SignIn() {
     e.preventDefault();
     await getUser(data.email, data.password);
     console.log(userDetails)
-    // await getProfile();
+    await getProfile();
     Cookies.set("userName", userDetails.data.userName , { expires:new Date(Date.now() + 9999999), httpOnly: false });
     Cookies.set("token", userDetails.data.token , { expires: new Date(Date.now() + 9999999), httpOnly: false });
     Cookies.set("currentUser", userDetails.data._id , { expires: new Date(Date.now() + 9999999), httpOnly: false });
-    // console.log(userDetails.profile.image)
-    // localStorage.setItem("profile", userDetails.profile.image);
-    // handleCookie("profile", userDetails.profile.image);
-    // localStorage.setItem("token", "token")
   };
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -68,7 +64,6 @@ function SignIn() {
       <div className="picture"></div>
       <div className="formLogin">
         <h1>Welcome Back</h1>
-        {/* <p>{user.email}</p> */}
         <i class="fa-solid fa-user-plus"></i>
         <h3 id="signup">Login</h3>
         {isLoading ? <LoadingSpinner/> :<h3 id="signup">SIGN UP</h3>}
@@ -76,7 +71,7 @@ function SignIn() {
         <form action="" onSubmit={handleSubmit}>
           <input
             type="email"
-            placeholder="&#xF002; Search"
+            placeholder="&#xF002; email"
             name="email"
             onChange={handleChange}
             value={data.email}
@@ -88,7 +83,6 @@ function SignIn() {
             onChange={handleChange}
             value={data.password}
           />
-          {/* <span><i class='fa-solid fa-user'></i></span> */}
           <p className="tip">Forgot password?<span id="redirect">Reset Password</span></p>
           <p>{response.message}</p>
           <button type="submit" id="submit">
