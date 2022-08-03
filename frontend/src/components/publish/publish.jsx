@@ -25,7 +25,7 @@ function Publish() {
     formData.append("author", data.author);
     formData.append("title", data.title);
     formData.append("Description", data.description);
-    const responseT = await axios.post("http://localhost:4001/uploadBook", formData, {
+    const responseT = await axios.post("https://novelia.herokuapp.com/uploadBook", formData, {
       headers:{
         Authorization: "Bearer " + Cookies.get("token")
       }
