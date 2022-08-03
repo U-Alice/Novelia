@@ -12,7 +12,7 @@ function Navbar() {
         <a href="">Novelia</a>
       </div>
       <div class="navbar1">
-        <Link to="/list">
+        <Link to="/welcome">
       My List
         </Link>
         <Link to="/welcome">Home</Link>
@@ -34,7 +34,7 @@ function Navbar() {
       </div>
       <div>
         <p className="name">{Cookies.get("userName")}</p>
-        <img src="" alt="" />
+        <img id="navImage" src="https://icon-library.com/images/no-profile-picture-icon/no-profile-picture-icon-18.jpg" alt="" />
       </div>
     </div>
   );

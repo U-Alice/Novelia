@@ -21,12 +21,21 @@
   color: #612d08;
   margin-left: 50px;
 }
+#navImage{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5%;
+  right:15%;
+}
 .name {
   font-size: 1.2em;
   font-family: "arima Madurai";
   font-weight: bold;
-  margin-left: 40%;
-  margin-top: 20%;
+  position: absolute;
+  top: 20%;
+  right: 10%;
 }
 .navImage {
   width: 100%;

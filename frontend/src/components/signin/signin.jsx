@@ -41,10 +41,15 @@ function SignIn() {
     });
     await setDetails(api.data.data);
     setLoading(false)
-    Cookies.set("userName", userDetails.userName , { expires:new Date(Date.now() + 9999999), httpOnly: false });
-    Cookies.set("token", userDetails.token , { expires: new Date(Date.now() + 9999999), httpOnly: false });
-    Cookies.set("currentUser", userDetails._id , { expires: new Date(Date.now() + 9999999), httpOnly: false });
+    console.log(userDetails.token)
+    if(userDetails.token) {
+      Cookies.set("userName", userDetails.userName , { expires:new Date(Date.now() + 9999999), httpOnly: false });
+      Cookies.set("token", userDetails.token , { expires: new Date(Date.now() + 9999999), httpOnly: false });
+      Cookies.set("currentUser", userDetails._id , { expires: new Date(Date.now() + 9999999), httpOnly: false });
       Navigate("/welcome")
+     }else{   
+        setResponse({messaage: "Invalid credentials"})
+    }
   }
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -13,11 +13,11 @@ function Body() {
         </div>
         <div className="images">
           <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1631282611i/55148022.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1524697191i/39900826.jpg"
             alt=""
           />
           <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1524697191i/39900826.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1631282611i/55148022.jpg"
             alt=""
             className="secondImage"
           />

@@ -27,7 +27,7 @@ function Profile(){
             </div>
             <div className="myProfile">
                 <div className="sideImage">
-                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2ZpbGV8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60" alt="" />
+                    <img src="https://icon-library.com/images/no-profile-picture-icon/no-profile-picture-icon-18.jpg" alt="" />
                     <p>Karry Woodson</p>
                 </div>
                 <div className="profileDetails">

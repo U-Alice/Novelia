@@ -20,10 +20,42 @@ import { BooksProvider } from "./components/booksContext";
 import Chat from "./components/chat/chat";
 import Cookies from "js-cookie";
 import Profile from "./components/profile/myProfile";
+import { useEffect, useState } from "react";
 
 function App() {
+
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+  
+    return { width, height };
+  }
+  
+function useWindowDimensions() {
+    const [windowDimensions, setWindowDimensions] = useState(
+      getWindowDimensions(),
+      
+    );
+  
+    useEffect(() => {
+      function handleResize() {
+        setWindowDimensions(getWindowDimensions());
+      }
+  
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    
+    return windowDimensions;
+  }
+  const { width, height } = useWindowDimensions();
+  
+// Check if the media query is true
   const user = Cookies.get("token");
-  return (
+  return width < 918 ? (
+    <div className="mobile-not-supported">
+        <h3>Try it On Desktop!!</h3>
+    </div>
+    ) :  (
     <div className="App">
       <Router>
         <UserProvider>

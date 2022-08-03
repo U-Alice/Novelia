@@ -37,10 +37,19 @@ h6 {
 }
 .details{
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
     margin-top: 5%;
     margin-left: 20%;
     gap: 15%;
 }
 .details p{
     color: #612d08;
+}
+button{
+  height: 40px;
+  background-color: #612D08;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }

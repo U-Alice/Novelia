@@ -10,7 +10,7 @@ const {trendingBooks , romance, horror, scienceBooks, retrieveBooks} = useContex
 const Navigate = useNavigate("")
 const handlePreview = (e)=>{
   console.log(e.target.value)
-  Navigate(`/preview/?id=${e.target.value}`)
+  Navigate(`/preview${e.target.value}`)
 }
 useEffect(()=>{
   retrieveBooks()
@@ -34,7 +34,7 @@ useEffect(()=>{
               <div>
                 <p>{item.title}</p> 
               </div>
-                <button onClick={handlePreview} value={item._id}>View Summary</button>
+                <button onClick={handlePreview} value={`?id=${item._id}`}>View Summary</button>
             </div>
           );
         })}
@@ -56,7 +56,9 @@ useEffect(()=>{
               </div>
               <div>
                 <p>{item.name}</p>
-                <button>View Summary</button>
+                <button onClick={handlePreview} value={`?name=${item.name}&author=${item.author}&imgUrl= ${item.cover}`}>View Summary</button>
+
+
               </div>
             </div>
           );
@@ -80,7 +82,8 @@ useEffect(()=>{
               </div>
               <div>
                 <p>{item.name}</p>
-                <button>View Summary</button>
+                <button onClick={handlePreview} value={`?name=${item.name}&author=${item.author}&imgUrl= ${item.cover}`}>View Summary</button>
+
               </div>
             </div>
           );
@@ -102,7 +105,8 @@ useEffect(()=>{
               </div>
               <div>
                 <p>{item.name}</p>
-                <button>View Summary</button>
+                <button onClick={handlePreview} value={`?name=${item.name}&author=${item.author}&imgUrl= ${item.cover}`}>View Summary</button>
+
               </div>
             </div>
           );
@@ -110,7 +114,6 @@ useEffect(()=>{
       </div>
 
     </div>
-    
   );
 }
 export default DisplayBooks;

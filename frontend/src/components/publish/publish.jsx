@@ -1,16 +1,38 @@
+import axios from "axios";
+import Cookies from "js-cookie";
 import { useState } from "react";
 import Navbar from "../home/navbar";
+import LoadingSpinner from "../spinner/spinner";
 import "./publish.css";
 
 function Publish() {
   const [data, setData] = useState({
-    name: "",
+    title: "",
     author: "",
+    description: ""
   });
-  const [selectedFile, setSelectedFile] = useState(null);
-  const handleSubmit = async () => {
+  const handleChange = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
+  };
+  const [response , setResponse ] =  useState("")
+  const [selectedFile, setSelectedFile] = useState({});
+  const [isLoading, setLoading] = useState(false) 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true)
     const formData = new FormData();
     formData.append("file", selectedFile, selectedFile.name);
+    formData.append("author", data.author);
+    formData.append("title", data.title);
+    formData.append("Description", data.description);
+    const responseT = await axios.post("http://localhost:4001/uploadBook", formData, {
+      headers:{
+        Authorization: "Bearer " + Cookies.get("token")
+      }
+    });
+    console.log(responseT)
+    setResponse(responseT.data.message)
+    setLoading(false)
   };
   return (
     <div className="publish">
@@ -22,12 +44,14 @@ function Publish() {
             alt=""
           />
         </div>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <h6>Publish your own novel</h6>
+        {isLoading ? <LoadingSpinner/> :<h3 id="signup">SIGN UP</h3>}
+
           <label htmlFor="">Book Title</label>
-          <input type="text" />
+          <input type="text" onChange={handleChange} name ="title" required/>
           <label htmlFor="">Name Of The Author</label>
-          <input type="text" />
+          <input type="text" name="author" onChange={handleChange} required/>
           <select name="category" id="category">
             <option value="Romance">Romance</option>
             <option value="Action">Action</option>
@@ -45,14 +69,16 @@ function Publish() {
               setSelectedFile(e.target.files[0]);
               console.log(selectedFile);
             }}
-          />
-          <label htmlFor="">Upload Book</label>
+          required/>
           <label htmlFor="">Add Cover</label>
           <input type="file" className="file" />
-          <label htmlFor="">Upload File</label>
+          {/* <input type="text" /> */}
           <label htmlFor="">Description</label>
-          <input type="text"></input>
-          <button id="publish">Publish</button>
+          <input type="text" onChange={handleChange} name = "description" required></input>
+          <button id="publish" type="submit">
+            Publish
+          </button>
+          <p>{response}</p>
         </form>
       </div>
     </div>

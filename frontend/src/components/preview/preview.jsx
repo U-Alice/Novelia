@@ -30,7 +30,7 @@ function Preview() {
     );
     const data = await api.json();
     setBook(data.book);
-    console.log(book._id);
+   
   }
   
   const addBook = async (e)=>{
@@ -46,25 +46,26 @@ function Preview() {
     console.log(data)
   }
 
-  useEffect(() => {
-    getBook();
-  }, []);
+  // useEffect(() => {
+  //   getBook();
+  // }, []);
+  console.log(query.get("imgUrl"))
   return (
     <div className="preview">
       <Navbar />
       <div className="summary">
         <img
-          src={book.imgUrl}
+          src={book.cover || query.get("imgUrl")}
           alt=""
         />
         <div className="summaryDesc">
           <h4>
-            {book.title}
+            {book.title || query.get("name")}
           </h4>
           <h6>{book.author}</h6>
           <div>
             <h1>Summary</h1>
-            <p>{book.description}</p>
+            <p>{book.description || "preview not available"}</p>
           </div>
           <div className="details">
             <div>
