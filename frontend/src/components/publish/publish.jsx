@@ -4,19 +4,14 @@ import "./publish.css";
 
 function Publish() {
   const [data, setData] = useState({
-    name:"",
-    author:"", 
-    
-  })
-
-
-  const handleSubmit = async ()=>{
-    const api = await fetch("http:localhost:4001/uploadBook", {
-      method:"POST", 
-      "content-Type":"application/json",
-      body: JSON.stringify(data)
-    })
-  }
+    name: "",
+    author: "",
+  });
+  const [selectedFile, setSelectedFile] = useState(null);
+  const handleSubmit = async () => {
+    const formData = new FormData();
+    formData.append("file", selectedFile, selectedFile.name);
+  };
   return (
     <div className="publish">
       <Navbar />
@@ -43,7 +38,14 @@ function Publish() {
           <label htmlFor="" className>
             Upload Book{" "}
           </label>
-          <input type="file" className="file" />
+          <input
+            type="file"
+            className="file"
+            onChange={(e) => {
+              setSelectedFile(e.target.files[0]);
+              console.log(selectedFile);
+            }}
+          />
           <label htmlFor="">Upload Book</label>
           <label htmlFor="">Add Cover</label>
           <input type="file" className="file" />

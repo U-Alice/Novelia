@@ -5,6 +5,7 @@ import LoadingSpinner from "../spinner/spinner";
 import Cookies from "js-cookie";
 import { useContext } from "react";
 import { userContext } from "../userContext";
+import axios from "axios"
 import { useState } from "react";
 function SignIn() {
   const [isLoading, setLoading] = useState(false)
@@ -32,19 +33,17 @@ function SignIn() {
   }
   async function getUser(email, password) {
     setLoading(true)
-    const api =await fetch("https://novelia.herokuapp.com/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    const api =await axios.post("https://novelia.herokuapp.com/login", {
+
         email: email,
         password: password,
-      }),
+  
     });
-    const data = await api.json();
-    await setDetails(data);
+    await setDetails(api.data.data);
     setLoading(false)
+    Cookies.set("userName", userDetails.userName , { expires:new Date(Date.now() + 9999999), httpOnly: false });
+    Cookies.set("token", userDetails.token , { expires: new Date(Date.now() + 9999999), httpOnly: false });
+    Cookies.set("currentUser", userDetails._id , { expires: new Date(Date.now() + 9999999), httpOnly: false });
       Navigate("/welcome")
   }
   const handleSubmit = async (e) => {
@@ -52,9 +51,6 @@ function SignIn() {
     await getUser(data.email, data.password);
     console.log(userDetails)
     await getProfile();
-    Cookies.set("userName", userDetails.data.userName , { expires:new Date(Date.now() + 9999999), httpOnly: false });
-    Cookies.set("token", userDetails.data.token , { expires: new Date(Date.now() + 9999999), httpOnly: false });
-    Cookies.set("currentUser", userDetails.data._id , { expires: new Date(Date.now() + 9999999), httpOnly: false });
   };
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });

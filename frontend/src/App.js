@@ -40,7 +40,6 @@ function App() {
               <Route path="/publish" element={<Publish />} />
               <Route path="/preview" element={<Preview />} />
               <Route path="/myBooks" element={<Profile />} />
-
               <Route
                 path="/chat"
                 element={!user ? <Navigate to="/signin" /> : <Chat />}
