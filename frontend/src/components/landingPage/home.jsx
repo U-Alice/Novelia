@@ -30,7 +30,7 @@ function Home() {
          <div>
             <nav>
                 <div>
-                 <a href="#">LOGO</a>
+                 <a href="#">Novelia</a>
                  <a href="#">Home</a>
                  <h6 onClick={scrollToAvailable}>Available</h6>
                  <h6 onClick={scrollToServices} >Services</h6>
