@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Cookies } from "react-cookie";
 
 function UploadImage() {
   const [file, setFile] = useState();
@@ -29,7 +30,7 @@ function UploadImage() {
         body: JSON.stringify({data: imageUrl}),
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.NjJhNWYwNzM0MWQyMjc4NGEwZDI3YTc1.gYlmT0YKnUivDWeaoE1VgKtbSMLZEyBEUNbn8MUyWsQ`,
+          Authorization: `Bearer ${Cookies.get("token")}`,
         },
       });
     } catch (err) {
